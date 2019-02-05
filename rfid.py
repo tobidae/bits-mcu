@@ -8,7 +8,8 @@ import time
 import serial
 import binascii
 import firebase_admin
-from firebase_admin import credentials, db
+from firebase_admin import credentials
+
 
 class Database:
     host = 'localhost'
