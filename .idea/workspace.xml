@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rfid.py" beforeDir="false" afterPath="$PROJECT_DIR$/rfid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,14 +32,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="132" />
+          <entry key="py" value="192" />
           <entry key="txt" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="32" />
-          <entry key="Python" value="132" />
+          <entry key="Python" value="192" />
         </counts>
       </usages-collector>
     </session>
@@ -51,20 +49,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rfid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="402">
+              <caret line="229" column="20" lean-forward="true" selection-start-line="178" selection-start-column="6" selection-end-line="229" selection-end-column="20" />
               <folding>
                 <element signature="e#85#106#0" expanded="true" />
                 <element signature="e#350#1631#0" />
                 <element signature="e#1658#2003#0" />
                 <element signature="e#2052#2162#0" />
                 <element signature="e#2193#2625#0" />
-                <element signature="e#2802#3149#0" />
-                <marker date="1549405543314" expanded="true" signature="1533:1774" ph="..." />
-                <marker date="1549405543314" expanded="true" signature="1557:1566" ph="..." />
-                <marker date="1549405543314" expanded="true" signature="1708:1714" ph="..." />
-                <marker date="1549405543314" expanded="true" signature="1736:1742" ph="..." />
-                <marker date="1549405543314" expanded="true" signature="1770:1771" ph="..." />
+                <marker date="1549411017816" expanded="true" signature="1549:1875" ph="..." />
+                <marker date="1549411017816" expanded="true" signature="1573:1582" ph="..." />
+                <marker date="1549411017816" expanded="true" signature="1737:1767" ph="..." />
+                <marker date="1549411017816" expanded="true" signature="1813:1819" ph="..." />
+                <marker date="1549411017816" expanded="true" signature="1871:1872" ph="..." />
               </folding>
             </state>
           </provider>
@@ -81,14 +78,19 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>scanning</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rfid.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/rfid.py" />
       </list>
     </option>
   </component>
@@ -155,6 +157,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
@@ -202,20 +205,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rfid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="402">
+          <caret line="229" column="20" lean-forward="true" selection-start-line="178" selection-start-column="6" selection-end-line="229" selection-end-column="20" />
           <folding>
             <element signature="e#85#106#0" expanded="true" />
             <element signature="e#350#1631#0" />
             <element signature="e#1658#2003#0" />
             <element signature="e#2052#2162#0" />
             <element signature="e#2193#2625#0" />
-            <element signature="e#2802#3149#0" />
-            <marker date="1549405543314" expanded="true" signature="1533:1774" ph="..." />
-            <marker date="1549405543314" expanded="true" signature="1557:1566" ph="..." />
-            <marker date="1549405543314" expanded="true" signature="1708:1714" ph="..." />
-            <marker date="1549405543314" expanded="true" signature="1736:1742" ph="..." />
-            <marker date="1549405543314" expanded="true" signature="1770:1771" ph="..." />
+            <marker date="1549411017816" expanded="true" signature="1549:1875" ph="..." />
+            <marker date="1549411017816" expanded="true" signature="1573:1582" ph="..." />
+            <marker date="1549411017816" expanded="true" signature="1737:1767" ph="..." />
+            <marker date="1549411017816" expanded="true" signature="1813:1819" ph="..." />
+            <marker date="1549411017816" expanded="true" signature="1871:1872" ph="..." />
           </folding>
         </state>
       </provider>
