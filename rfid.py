@@ -62,10 +62,13 @@ class FireDB:
         self.dbApp = firebase_admin.initialize_app(self.cred)
 
     def update(self, ref, data):
+        print('Update')
 
     def delete(self, ref):
+        print('Delete')
 
     def create(self, ref, data):
+        print('Create')
 
 
 
@@ -102,10 +105,10 @@ def addtolist():
                  rfidtag.remove(row)
 
 
-def tick():
-    time2 = time.strftime('%I:%M:%S %p')
-    clock.config(text="TIME: " + time2)
-    clock.after(200, tick)
+# def tick():
+#     time2 = time.strftime('%I:%M:%S %p')
+#     clock.config(text="TIME: " + time2)
+#     clock.after(200, tick)
 
 
 def startscanning(): #function that scan rfid
@@ -146,87 +149,87 @@ if __name__ == "__main__":
     # ---------------------
 
 
-    def addrfid():
-        addtolist()
-        ListoutText.delete("0", END)
-        rfidLabelFrame.config(text="RFID DATA " + str(len(rfidtag)))
-        i = 0
-        for pr in rfidtag:
-            ListoutText.insert(i, pr)  # an example of how to add new text to the text area
-            i = i + 1
-        if (len(rfidtag) == 0):  # if no records found
-            ListoutText.insert("0", "No Records")
-
-
-    #insert Status of the student in array    
-    def checkStatus():
-        rfidLabelFrame.pack(expand=True)
-        HomeFrame.pack_forget()
-        BtnFrame.pack(expand=True)
-
-
-    def backHome():
-        rfidLabelFrame.pack_forget()
-        HomeFrame.pack(expand=True)
-        BtnFrame.pack_forget()
+    # def addrfid():
+    #     addtolist()
+    #     ListoutText.delete("0", END)
+    #     rfidLabelFrame.config(text="RFID DATA " + str(len(rfidtag)))
+    #     i = 0
+    #     for pr in rfidtag:
+    #         ListoutText.insert(i, pr)  # an example of how to add new text to the text area
+    #         i = i + 1
+    #     if (len(rfidtag) == 0):  # if no records found
+    #         ListoutText.insert("0", "No Records")
+    #
+    #
+    # #insert Status of the student in array
+    # def checkStatus():
+    #     rfidLabelFrame.pack(expand=True)
+    #     HomeFrame.pack_forget()
+    #     BtnFrame.pack(expand=True)
+    #
+    #
+    # def backHome():
+    #     rfidLabelFrame.pack_forget()
+    #     HomeFrame.pack(expand=True)
+    #     BtnFrame.pack_forget()
 
     startscanning()
 
     # -------------Frames---------------
-    HeaderFrame = Frame(root)
-    HeaderFrame.pack(side=TOP, expand=False,fill=BOTH)
-    HomeFrame = Frame(root, bg="#66dfe8")
-    HomeFrame.pack(side=TOP, expand=True)
-    NewScanFrame = Frame(root, bg="#66dfe8")
-    BtnFrame = Frame(root,bg="#66dfe8")
-    BottomFrame = Frame(root, bg="#66dfe8")
-    BottomFrame.config(bg="#333333", height="10px")
-    BottomFrame.pack(side=BOTTOM, fill=X)
-    # ---------------------------------
+    # HeaderFrame = Frame(root)
+    # HeaderFrame.pack(side=TOP, expand=False,fill=BOTH)
+    # HomeFrame = Frame(root, bg="#66dfe8")
+    # HomeFrame.pack(side=TOP, expand=True)
+    # NewScanFrame = Frame(root, bg="#66dfe8")
+    # BtnFrame = Frame(root,bg="#66dfe8")
+    # BottomFrame = Frame(root, bg="#66dfe8")
+    # BottomFrame.config(bg="#333333", height="10px")
+    # BottomFrame.pack(side=BOTTOM, fill=X)
+    # # ---------------------------------
+    #
+    # HeaderLabel = Label(HeaderFrame, font=("Courier", 30, "bold"), text="RFID SYSTEM version 1")
+    # HeaderLabel.pack(side=TOP, fill=BOTH, expand=False, padx = 10 ,pady = 10)
+    #
+    # clock = Label(HeaderFrame, font=('times', 20, 'bold'), bg='green')
+    # clock.pack(side=TOP, expand=False, fill=BOTH)
+    #
+    # rfidLabelFrame = LabelFrame(root,font=("Courier", 12, "bold"), text="Student",labelanchor='n')
+    # StatusScroll = Scrollbar(rfidLabelFrame)
+    # xStatusScroll = Scrollbar(rfidLabelFrame)
+    # ListoutText = Listbox(rfidLabelFrame, font=("Courier", 15, "bold"), width=23, height=4,yscrollcommand=StatusScroll.set)
+    # StatusScroll.config(command=ListoutText.yview)
+    # ListoutText.delete("0")  # an example of how to delete all current text
+    #
+    #
+    # StatusScroll.pack(side=RIGHT, fill=Y)
+    # ListoutText.pack(side=TOP, fill=BOTH, expand=False)
+    # addrfid()
+    #
+    # btnviewRFID = Button(BtnFrame, text="Refresh", command=addrfid)
+    # btndeleteRFID = Button(BtnFrame, text="DELETE", command=deleterfid)
+    #
+    # btnviewRFID.grid(row=0, column=1, sticky="nsew", padx=5,pady=5)
+    # btndeleteRFID.grid(row=0, column=2, sticky="nsew", padx=5,pady=5)
+    #
+    # Label12 = Label(HomeFrame, text="Automatic Scanning RFID TAG", font=("Courier",25, "bold"), bg="#66dfe8",
+    #                 anchor="center")
+    #
+    # Label12.pack(expand = True , side=TOP)
+    # btn1 = Button(HomeFrame, text="View RFID Data",command=checkStatus)
+    # btn1.pack(side=RIGHT,expand=True)
+    #
+    # btn2 = Button(BtnFrame, text="Back Home", command=backHome)
+    # btn2.grid(row=1,column=1,padx=5,pady=5)
+    #
+    # Label23 = Label(BottomFrame, text="RIFD SCANNER System ver.1", font=("Courier", 9, "bold"),
+    #                 fg="blue",
+    #                 bg="#333333", anchor="center")
+    # Label23.pack()
+    # Label24 = Label(BottomFrame, text="Project of BTIT2016-17", font=("Courier", 9, "bold"), fg="blue", bg="#333333",
+    #                 anchor="center")
+    # Label24.pack()
 
-    HeaderLabel = Label(HeaderFrame, font=("Courier", 30, "bold"), text="RFID SYSTEM version 1")
-    HeaderLabel.pack(side=TOP, fill=BOTH, expand=False, padx = 10 ,pady = 10)
-
-    clock = Label(HeaderFrame, font=('times', 20, 'bold'), bg='green')
-    clock.pack(side=TOP, expand=False, fill=BOTH)
-
-    rfidLabelFrame = LabelFrame(root,font=("Courier", 12, "bold"), text="Student",labelanchor='n')
-    StatusScroll = Scrollbar(rfidLabelFrame)
-    xStatusScroll = Scrollbar(rfidLabelFrame)
-    ListoutText = Listbox(rfidLabelFrame, font=("Courier", 15, "bold"), width=23, height=4,yscrollcommand=StatusScroll.set)
-    StatusScroll.config(command=ListoutText.yview)
-    ListoutText.delete("0")  # an example of how to delete all current text
-
-
-    StatusScroll.pack(side=RIGHT, fill=Y)
-    ListoutText.pack(side=TOP, fill=BOTH, expand=False)
-    addrfid()
-
-    btnviewRFID = Button(BtnFrame, text="Refresh", command=addrfid)
-    btndeleteRFID = Button(BtnFrame, text="DELETE", command=deleterfid)
-
-    btnviewRFID.grid(row=0, column=1, sticky="nsew", padx=5,pady=5)
-    btndeleteRFID.grid(row=0, column=2, sticky="nsew", padx=5,pady=5)
-    
-    Label12 = Label(HomeFrame, text="Automatic Scanning RFID TAG", font=("Courier",25, "bold"), bg="#66dfe8",
-                    anchor="center")
-
-    Label12.pack(expand = True , side=TOP)
-    btn1 = Button(HomeFrame, text="View RFID Data",command=checkStatus)
-    btn1.pack(side=RIGHT,expand=True)
-
-    btn2 = Button(BtnFrame, text="Back Home", command=backHome)
-    btn2.grid(row=1,column=1,padx=5,pady=5)
-
-    Label23 = Label(BottomFrame, text="RIFD SCANNER System ver.1", font=("Courier", 9, "bold"),
-                    fg="blue",
-                    bg="#333333", anchor="center")
-    Label23.pack()
-    Label24 = Label(BottomFrame, text="Project of BTIT2016-17", font=("Courier", 9, "bold"), fg="blue", bg="#333333",
-                    anchor="center")
-    Label24.pack()
-
-    tick()
+    # tick()
     root.mainloop()
 
 
