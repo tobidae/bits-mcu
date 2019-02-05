@@ -10,13 +10,10 @@ import binascii
 import firebase_admin
 from firebase_admin import credentials, db
 
-cred = credentials.Certificate("google-services.json")
-firebase_admin.initialize_app(cred)
-
 class Database:
     host = 'localhost'
     user = 'root'
-    password = '123123'
+    password = ''
     db = 'rfid'
 
     # Initialize the database connection here
@@ -57,6 +54,19 @@ class Database:
 
     def __del__(self):
         self.connection.close()
+
+
+class FireDB:
+    def __init__(self):
+        self.cred = credentials.Certificate("google-services.json")
+        self.dbApp = firebase_admin.initialize_app(self.cred)
+
+    def update(self, ref, data):
+
+    def delete(self, ref):
+
+    def create(self, ref, data):
+
 
 
 def view(rfidvalue):
