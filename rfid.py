@@ -9,6 +9,7 @@ import serial
 import binascii
 import firebase_admin
 from firebase_admin import credentials
+import sched
 
 
 class Database:
@@ -124,14 +125,14 @@ def startscanning(): #function that scan rfid
         view(rfidvalue)
     else:
         print('Scanning...')
-    root.after(1000, startscanning)
+    s.enter(1, 1, startscanning)
 
 
 # Tkinter is initialized as root
-root = Tk()
-root.config(bg="#66dfe8", bd=6, relief='raised')
-root.geometry("800x480")
-root.title("SAM v2")
+# root = Tk()
+# root.config(bg="#66dfe8", bd=6, relief='raised')
+# root.geometry("800x480")
+# root.title("SAM v2")
 rfidtag =[]
 # class RFIDReads:
 
@@ -148,7 +149,6 @@ if __name__ == "__main__":
         ser = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=.0001)
  
     # ---------------------
-
 
     # def addrfid():
     #     addtolist()
@@ -174,7 +174,9 @@ if __name__ == "__main__":
     #     HomeFrame.pack(expand=True)
     #     BtnFrame.pack_forget()
 
-    startscanning()
+    s = sched.scheduler(time.time, time.sleep)
+    s.enter(1, 1, startscanning)
+    s.run()
 
     # -------------Frames---------------
     # HeaderFrame = Frame(root)
@@ -231,6 +233,6 @@ if __name__ == "__main__":
     # Label24.pack()
 
     # tick()
-    root.mainloop()
+    # root.mainloop()
 
 
