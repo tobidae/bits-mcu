@@ -20,56 +20,50 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="2" />
-          <entry key="txt" value="2" />
+          <entry key="py" value="7" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="200" />
+          <entry key="py" value="839" />
           <entry key="txt" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="32" />
-          <entry key="Python" value="200" />
+          <entry key="Python" value="839" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rfid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+            <state relative-caret-position="885">
+              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
               <folding>
                 <element signature="e#85#106#0" expanded="true" />
-                <element signature="e#350#1631#0" />
-                <element signature="e#1658#2003#0" />
-                <element signature="e#2052#2162#0" />
-                <element signature="e#2193#2625#0" />
-                <element signature="e#3941#3957#0" />
-                <element signature="e#4709#4745#0" />
-                <marker date="1549411335671" expanded="true" signature="1559:1885" ph="..." />
-                <marker date="1549411335671" expanded="true" signature="1583:1592" ph="..." />
-                <marker date="1549411335671" expanded="true" signature="1747:1777" ph="..." />
-                <marker date="1549411335671" expanded="true" signature="1823:1829" ph="..." />
-                <marker date="1549411335671" expanded="true" signature="1881:1882" ph="..." />
+                <marker date="1549499918277" expanded="true" signature="553:1178" ph="..." />
+                <marker date="1549499918277" expanded="true" signature="577:586" ph="..." />
+                <marker date="1549499918277" expanded="true" signature="782:788" ph="..." />
+                <marker date="1549499918277" expanded="true" signature="847:853" ph="..." />
+                <marker date="1549499918277" expanded="true" signature="1131:1177" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -119,6 +113,11 @@
               <item name="bits-pi" type="b2602c69:ProjectViewProjectNode" />
               <item name="bits-pi" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bits-pi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bits-pi" type="462c0819:PsiDirectoryNode" />
+              <item name="sample1" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -162,13 +161,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -198,31 +197,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sched.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="203">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/firebase_admin/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#613#628#0" expanded="true" />
+            <element signature="e#1141#3617#0" />
+            <element signature="e#3645#4608#0" />
+            <element signature="e#4652#5651#0" />
+            <element signature="e#5685#7287#0" />
+            <element signature="e#7313#12052#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample1/TestRaspberryPi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2540" />
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/firebase_admin/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="348" column="8" selection-start-line="348" selection-start-column="8" selection-end-line="348" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rfid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+        <state relative-caret-position="885">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
           <folding>
             <element signature="e#85#106#0" expanded="true" />
-            <element signature="e#350#1631#0" />
-            <element signature="e#1658#2003#0" />
-            <element signature="e#2052#2162#0" />
-            <element signature="e#2193#2625#0" />
-            <element signature="e#3941#3957#0" />
-            <element signature="e#4709#4745#0" />
-            <marker date="1549411335671" expanded="true" signature="1559:1885" ph="..." />
-            <marker date="1549411335671" expanded="true" signature="1583:1592" ph="..." />
-            <marker date="1549411335671" expanded="true" signature="1747:1777" ph="..." />
-            <marker date="1549411335671" expanded="true" signature="1823:1829" ph="..." />
-            <marker date="1549411335671" expanded="true" signature="1881:1882" ph="..." />
+            <marker date="1549499918277" expanded="true" signature="553:1178" ph="..." />
+            <marker date="1549499918277" expanded="true" signature="577:586" ph="..." />
+            <marker date="1549499918277" expanded="true" signature="782:788" ph="..." />
+            <marker date="1549499918277" expanded="true" signature="847:853" ph="..." />
+            <marker date="1549499918277" expanded="true" signature="1131:1177" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
