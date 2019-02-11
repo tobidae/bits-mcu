@@ -1,3 +1,6 @@
 firebase-admin
 PyMySQL
 serial
+pyserial
+numpy
+cv2
