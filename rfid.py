@@ -9,6 +9,7 @@ from firebase_admin import db
 import sched
 import uuid
 import platform
+import json
 
 """
 Logic
@@ -53,6 +54,12 @@ def get_caseid_with_rfid(database, rfid):
     return database.get('caseRFIDs/{0}'.format(rfid))
 
 
+def get_case_info(database, caseid):
+    # Pass in the table where the case info is stored
+    # Returns details about the case
+    return database.get('caseInfo/{0}'.format(caseid))
+
+
 # Continuously scans rfid
 def start_scanning(database):
     size = ser.inWaiting()
@@ -60,7 +67,8 @@ def start_scanning(database):
         rfid_value = convert_scan(size)
         print("Scanned ID: {0}".format(rfid_value))
         case_id = get_caseid_with_rfid(database, rfid_value)
-        print(case_id)
+        case_data = get_case_info(database, case_id)
+        print(json.loads(case_data))
     s.enter(1, 1, start_scanning, argument=(database,))
 
 
