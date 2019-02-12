@@ -45,6 +45,12 @@ class Database:
             # print(event.event_type)  # can be 'put' or 'patch'
             # print(event.path)  # relative to the reference
             print(event.data)  # new data at /reference/event.path. None if deleted
+            caseId = dict(event.data)['caseId']
+            case_data = get_case_info(self, caseId)
+            case_dict = dict(case_data)
+            print(case_dict["name"])
+            print(case_dict["rfid"])
+            print('=='*10)
         return db.reference(path).listen(listener)
 
 
@@ -71,8 +77,7 @@ def start_scanning(database):
         case_data = get_case_info(database, case_id)
         case_dict = dict(case_data)
         print(case_dict["name"])
-    else:
-        print('Scanning...')
+        print('=='*10)
     s.enter(1, 1, start_scanning, argument=(database,))
 
 

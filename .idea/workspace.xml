@@ -25,27 +25,27 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="py" value="21" />
+          <entry key="py" value="22" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="21" />
+          <entry key="Python" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="14" />
-          <entry key="py" value="2565" />
-          <entry key="txt" value="255" />
+          <entry key="py" value="2834" />
+          <entry key="txt" value="289" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="269" />
-          <entry key="Python" value="2565" />
+          <entry key="PLAIN_TEXT" value="303" />
+          <entry key="Python" value="2834" />
         </counts>
       </usages-collector>
     </session>
@@ -55,14 +55,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rfid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="73" column="26" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+            <state relative-caret-position="422">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
-                <marker date="1550002985161" expanded="true" signature="702:704" ph="..." />
-                <marker date="1550002985161" expanded="true" signature="1105:1110" ph="..." />
-                <marker date="1550002985161" expanded="true" signature="1812:1815" ph="..." />
-                <marker date="1550002985161" expanded="true" signature="2258:2261" ph="..." />
+                <marker date="1550005465426" expanded="true" signature="702:704" ph="..." />
+                <marker date="1550005465426" expanded="true" signature="1105:1110" ph="..." />
+                <marker date="1550005465426" expanded="true" signature="2053:2056" ph="..." />
+                <marker date="1550005465426" expanded="true" signature="2528:2531" ph="..." />
               </folding>
             </state>
           </provider>
@@ -210,7 +210,35 @@
       <option name="project" value="LOCAL" />
       <updated>1549953750879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="case ID">
+      <created>1550003018780</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1550003018780</updated>
+    </task>
+    <task id="LOCAL-00008" summary="colon">
+      <created>1550003058174</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1550003058174</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Case dict">
+      <created>1550004451455</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1550004451455</updated>
+    </task>
+    <task id="LOCAL-00010" summary="print case">
+      <created>1550004567288</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1550004567288</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -254,7 +282,11 @@
     <MESSAGE value="added some first time run handling" />
     <MESSAGE value="remove idea file" />
     <MESSAGE value="get case info, convert to json" />
-    <option name="LAST_COMMIT_MESSAGE" value="get case info, convert to json" />
+    <MESSAGE value="case ID" />
+    <MESSAGE value="colon" />
+    <MESSAGE value="Case dict" />
+    <MESSAGE value="print case" />
+    <option name="LAST_COMMIT_MESSAGE" value="print case" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -340,21 +372,21 @@
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
+        <state relative-caret-position="-163">
           <caret line="298" column="4" selection-start-line="298" selection-start-column="4" selection-end-line="298" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rfid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="73" column="26" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+        <state relative-caret-position="422">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
-            <marker date="1550002985161" expanded="true" signature="702:704" ph="..." />
-            <marker date="1550002985161" expanded="true" signature="1105:1110" ph="..." />
-            <marker date="1550002985161" expanded="true" signature="1812:1815" ph="..." />
-            <marker date="1550002985161" expanded="true" signature="2258:2261" ph="..." />
+            <marker date="1550005465426" expanded="true" signature="702:704" ph="..." />
+            <marker date="1550005465426" expanded="true" signature="1105:1110" ph="..." />
+            <marker date="1550005465426" expanded="true" signature="2053:2056" ph="..." />
+            <marker date="1550005465426" expanded="true" signature="2528:2531" ph="..." />
           </folding>
         </state>
       </provider>
