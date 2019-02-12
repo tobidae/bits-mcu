@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-# Table Name - rfid_data
-# Fields - id, rfid_tag, time, count
-
 import time
 import serial
 import binascii
@@ -11,6 +8,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import sched
 import uuid
+import platform
 
 """
 Logic
@@ -23,7 +21,7 @@ Check table and get the most recent push or position.
 class Database:
     def __init__(self):
         self.cred = credentials.Certificate("google-services.json")
-        self.dbApp = firebase_admin.initialize_app(self.cred)
+        self.dbApp = firebase_admin.initialize_app(self.cred, {'databaseURL': 'https://boeing-bits.firebaseio.com/'})
 
     def update(self, path, data):
         return db.reference(path).update(data)
@@ -55,13 +53,14 @@ def get_caseid_with_rfid(database, rfid):
 
 
 # Continuously scans rfid
-def start_scanning(db):
+def start_scanning(database):
     size = ser.inWaiting()
     if size:
         rfid_value = convert_scan(size)
-        print(rfid_value)
-        case_id = get_caseid_with_rfid(db, rfid_value)
-    s.enter(1, 1, start_scanning, firedb)
+        print("Scanned ID: {0}".format(rfid_value))
+        case_id = get_caseid_with_rfid(database, rfid_value)
+        print(case_id)
+    s.enter(1, 1, start_scanning, argument=(database,))
 
 
 # Reads the size byte, converts it to hex then decodes to ascii
@@ -77,18 +76,26 @@ if __name__ == "__main__":
 
     # Create an instance of the database class
     firedb = Database()
+
     # Get the MAC Address of the device running program. Used to uniquely identify each kart
     mac_id = hex(uuid.getnode())
 
     # Open Serial, if there is an exception, try the next port
-    try: 
-        ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
+    try:
+        # Find the serial value on your unix device using `ls /dev/tty.*`
+        if platform.system() == 'Windows':
+            ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
+        elif platform.system() == 'Darwin':
+            ser = serial.Serial(port='/dev/tty.usbserial-1410', baudrate=9600, timeout=.0001)
+        else:
+            ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
+
     except serial.SerialException as msg:
         ser = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=.0001)
 
     s = sched.scheduler(time.time, time.sleep)
     # Set a delay of 1 second with priority 1, pass in the scanning function and the firedb instance as an argument
-    s.enter(1, 1, start_scanning, firedb)
+    s.enter(1, 1, start_scanning, argument=(firedb,))
     s.run()
 
     # TODO: Give each raspberry pi a unique id by using something like their mac address
