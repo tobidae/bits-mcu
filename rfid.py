@@ -93,11 +93,11 @@ if __name__ == "__main__":
     except serial.SerialException as msg:
         ser = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=.0001)
 
+    # TODO: Give each raspberry pi a unique id by using something like their mac address
+    # Listen to the kartQueue table for any orders that come in
+    firedb.listen('kartQueue')
+
     s = sched.scheduler(time.time, time.sleep)
     # Set a delay of 1 second with priority 1, pass in the scanning function and the firedb instance as an argument
     s.enter(1, 1, start_scanning, argument=(firedb,))
     s.run()
-
-    # TODO: Give each raspberry pi a unique id by using something like their mac address
-    # Listen to the kartQueue table for any orders that come in
-    firedb.listen('kartQueue')
