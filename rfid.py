@@ -70,7 +70,7 @@ def start_scanning(database):
         print(case_id)
         case_data = get_case_info(database, case_id)
         print(case_data)
-    else
+    else:
         print('Scanning...')
     s.enter(1, 1, start_scanning, argument=(database,))
 
