@@ -67,9 +67,10 @@ def start_scanning(database):
         rfid_value = convert_scan(size)
         print("Scanned ID: {0}".format(rfid_value))
         case_id = get_caseid_with_rfid(database, rfid_value)
-        print(case_id)
+        # print(case_id)
         case_data = get_case_info(database, case_id)
-        print(case_data)
+        case_dict = dict(case_data)
+        print(case_dict["name"])
     else:
         print('Scanning...')
     s.enter(1, 1, start_scanning, argument=(database,))
