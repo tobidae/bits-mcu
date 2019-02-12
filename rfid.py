@@ -57,7 +57,7 @@ def get_caseid_with_rfid(database, rfid):
 def get_case_info(database, caseid):
     # Pass in the table where the case info is stored
     # Returns details about the case
-    return database.get('caseInfo/{0}'.format(caseid))
+    return database.get('cases/{0}'.format(caseid))
 
 
 # Continuously scans rfid
@@ -67,8 +67,11 @@ def start_scanning(database):
         rfid_value = convert_scan(size)
         print("Scanned ID: {0}".format(rfid_value))
         case_id = get_caseid_with_rfid(database, rfid_value)
+        print(case_id)
         case_data = get_case_info(database, case_id)
-        print(json.loads(case_data))
+        print(case_data)
+    else
+        print('Scanning...')
     s.enter(1, 1, start_scanning, argument=(database,))
 
 
@@ -84,6 +87,7 @@ def convert_scan(size):
 # When the PI code is first run, it gives the current data in db, ignore that data
 def ignore_first_call(fn):
     called = False
+
     def wrapper(*args, **kwargs):
         nonlocal called
         if called:
@@ -108,7 +112,7 @@ if __name__ == "__main__":
         if platform.system() == 'Windows':
             ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
         elif platform.system() == 'Darwin':
-            ser = serial.Serial(port='/dev/tty.usbserial-1410', baudrate=9600, timeout=.0001)
+            ser = serial.Serial(port='/dev/tty.usbserial-1440', baudrate=9600, timeout=.0001)
         else:
             ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
 
