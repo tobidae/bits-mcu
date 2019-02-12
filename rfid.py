@@ -39,9 +39,10 @@ class Database:
         return db.reference(path).push(data)
 
     def listen(self, path):
+        @ignore_first_call
         def listener(event):
-            print(event.event_type)  # can be 'put' or 'patch'
-            print(event.path)  # relative to the reference
+            # print(event.event_type)  # can be 'put' or 'patch'
+            # print(event.path)  # relative to the reference
             print(event.data)  # new data at /reference/event.path. None if deleted
         return db.reference(path).listen(listener)
 
@@ -70,6 +71,19 @@ def convert_scan(size):
     x = binascii.hexlify(x)
     q = x.decode("ascii")
     return q[4:27]
+
+
+# When the PI code is first run, it gives the current data in db, ignore that data
+def ignore_first_call(fn):
+    called = False
+    def wrapper(*args, **kwargs):
+        nonlocal called
+        if called:
+            return fn(*args, **kwargs)
+        else:
+            called = True
+            return None
+    return wrapper
 
 
 if __name__ == "__main__":
