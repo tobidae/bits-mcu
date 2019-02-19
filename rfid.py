@@ -9,7 +9,6 @@ from firebase_admin import db
 import sched
 import uuid
 import platform
-import json
 
 """
 Logic
@@ -42,14 +41,16 @@ class Database:
     def listen(self, path):
         @ignore_first_call
         def listener(event):
+            # Print for testing
             # print(event.event_type)  # can be 'put' or 'patch'
             # print(event.path)  # relative to the reference
             print(event.data)  # new data at /reference/event.path. None if deleted
             caseId = dict(event.data)['caseId']
             case_data = get_case_info(self, caseId)
             case_dict = dict(case_data)
-            print(case_dict["name"])
-            print(case_dict["rfid"])
+            # Print for testing
+            # print(case_dict["name"])
+            # print(case_dict["rfid"])
             print('=='*10)
         return db.reference(path).listen(listener)
 
