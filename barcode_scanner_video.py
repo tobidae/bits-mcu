@@ -50,7 +50,7 @@ while True:
 		barcodeData = barcode.data.decode("utf-8")
 		barcodeType = barcode.type
 		# barcodejson = json.loads(barcodeData)
-		
+
 
 		# draw the barcode data and barcode type on the image
 		text = "{} ({})".format(barcodeData, barcodeType)
@@ -68,7 +68,7 @@ while True:
 	# show the output frame
 	cv2.imshow("Barcode Scanner", frame)
 	key = cv2.waitKey(1) & 0xFF
- 
+
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
