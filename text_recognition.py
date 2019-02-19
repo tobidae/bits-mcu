@@ -83,6 +83,7 @@ ap.add_argument("-p", "--padding", type=float, default=0.0,
 args = vars(ap.parse_args())
 
 # load the input image and grab the image dimensions
+while True: 
 image = cv2.imread(args["image"])
 orig = image.copy()
 (origH, origW) = image.shape[:2]
