@@ -7,7 +7,7 @@ from firebase_admin import db
 
 class Database:
     def __init__(self):
-        self.cred = credentials.Certificate("google-services.json")
+        self.cred = credentials.Certificate("helpers/google-services.json")
         self.dbApp = firebase_admin.initialize_app(self.cred, {'databaseURL': 'https://boeing-bits.firebaseio.com/'})
 
     def update(self, path, data):
@@ -28,9 +28,6 @@ class Database:
     def listen(self, path):
         @ignore_first_call
         def listener(event):
-            # print(event.event_type)  # can be 'put' or 'patch'
-            # print(event.path)  # relative to the reference
-            # print(event.data)  # new data at /reference/event.path. None if deleted
             return event.data
         return db.reference(path).listen(listener)
 
