@@ -34,8 +34,6 @@ def main():
         text_output = grid_reknize.recognize(frame)
         rfid_scanner.start_scanning()
 
-
-
         key = cv2.waitKey(1) & 0xFF
 
         # if the `q` key was pressed, break from the loop
