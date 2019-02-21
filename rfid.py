@@ -38,6 +38,7 @@ class Rfid:
         # Listen to the kartQueue unique to the device for any orders that come in
         self.database.listen('kartQueue/{0}'.format(mac_id))
 
+        # TODO: This might cause trouble with overall running of program, keep in mind
         self.s = sched.scheduler(time.time, time.sleep)
         # Set a delay of 1 second with priority 1, pass in the scanning function
         self.s.enter(1, 1, self.start_scanning)
