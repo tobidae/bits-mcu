@@ -6,7 +6,7 @@ import barcode_scanner
 from imutils.video import VideoStream
 import imutils
 import time
-
+import cv2
 
 def main():
     # Initialize the database
@@ -21,6 +21,7 @@ def main():
     # Initialize the rfid and pass in the database instance as a argument
     rfid_scanner = rfid.Rfid(db)
     bar_scanner = barcode_scanner.Scanner()
+    grid_reknize = text_recognition.TextRecognition()
 
     while True:
         # grab the frame from the threaded video stream and resize it to
@@ -29,7 +30,14 @@ def main():
         frame = imutils.resize(frame, width=400)
 
         bar_scanner.run_scanner(frame)
+        grid_reknize.recognize(frame)
         rfid_scanner.start_scanning()
+
+        key = cv2.waitKey(1) & 0xFF
+
+        # if the `q` key was pressed, break from the loop
+        if key == ord("q"):
+            break
 
 
 if __name__ == "__main__":

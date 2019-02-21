@@ -39,10 +39,10 @@ class Rfid:
         self.database.listen('kartQueue/{0}'.format(mac_id))
 
         # TODO: This might cause trouble with overall running of program, keep in mind
-        self.s = sched.scheduler(time.time, time.sleep)
-        # Set a delay of 1 second with priority 1, pass in the scanning function
-        self.s.enter(1, 1, self.start_scanning)
-        self.s.run()
+        # self.s = sched.scheduler(time.time, time.sleep)
+        # # Set a delay of 1 second with priority 1, pass in the scanning function
+        # self.s.enter(1, 1, self.start_scanning)
+        # self.s.run()
 
     def get_caseid_with_rfid(self, rfid):
         # Pass in the table where the RFID and caseID relationship is stored
@@ -66,7 +66,7 @@ class Rfid:
             case_dict = dict(case_data)
             print(case_dict["name"])
             print('=='*10)
-        self.s.enter(1, 1, self.start_scanning)
+        # self.s.enter(1, 1, self.start_scanning)
 
     # Reads the size byte, converts it to hex then decodes to ascii
     def convert_scan(self, size):
