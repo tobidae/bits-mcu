@@ -159,7 +159,6 @@ class TextRecognition:
         # loop over the results
         for ((startX, startY, endX, endY), text) in results:
             # display the text OCR'd by Tesseract
-            print("OCR TEXT")
             print("========")
             print("{}\n".format(text))
 

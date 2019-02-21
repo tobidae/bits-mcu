@@ -24,21 +24,26 @@ class Database:
         return db.reference(path).push(data)
 
     def listen(self, path):
-        @ignore_first_call
+        return db.reference(path)
+
+    def listen_with_callback(self, path):
+        @self.ignore_first_call
         def listener(event):
             return event.data
         return db.reference(path).listen(listener)
 
+    def parse_path(self, path):
+        return db._parse_path(path)
 
-# When the PI code is first run, it gives the current data in db, ignore that data
-def ignore_first_call(fn):
-    called = False
+    # When the PI code is first run, it gives the current data in db, ignore that data
+    def ignore_first_call(self, fn):
+        called = False
 
-    def wrapper(*args, **kwargs):
-        nonlocal called
-        if called:
-            return fn(*args, **kwargs)
-        else:
-            called = True
-            return None
-    return wrapper
+        def wrapper(*args, **kwargs):
+            nonlocal called
+            if called:
+                return fn(*args, **kwargs)
+            else:
+                called = True
+                return None
+        return wrapper
