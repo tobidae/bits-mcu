@@ -7,7 +7,7 @@ import ast
 
 class Scanner:
 	def __init__(self):
-		print("Starting Barcode Scanner")
+		print("[INFO] Starting Barcode Scanner")
 
 	@staticmethod
 	def run_scanner(frame):

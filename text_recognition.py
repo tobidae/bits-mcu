@@ -10,11 +10,11 @@ from configparser import ConfigParser
 
 class TextRecognition:
     def __init__(self):
-        print("Starting OCR")
+        print("[INFO] Starting OCR")
         self.pyconfig = ConfigParser()
         self.pyconfig.read('config.ini')
 
-        print("[INFO] loading EAST text detector...")
+        print("[INFO] Loading EAST text detector...")
         self.east_detector = self.pyconfig.get('text_recognition', 'east_detector')
         # load the pre-trained EAST text detector
         self.net = cv2.dnn.readNet(self.east_detector)
@@ -155,6 +155,7 @@ class TextRecognition:
         # sort the results bounding box coordinates from top to bottom
         results = sorted(results, key=lambda r: r[0][1])
 
+        output_data = []
         # loop over the results
         for ((startX, startY, endX, endY), text) in results:
             # display the text OCR'd by Tesseract
@@ -166,9 +167,6 @@ class TextRecognition:
             # using OpenCV, then draw the text and a bounding box surrounding
             # the text region of the input image
             text = "".join([c if ord(c) < 128 else "" for c in text]).strip()
-            output = orig.copy()
-            cv2.rectangle(output, (startX, startY), (endX, endY), (0, 0, 255), 2)
-            cv2.putText(output, text, (startX, startY - 20), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255), 3)
+            output_data.append(text)
 
-            # show the output image
-            cv2.imshow("Text Detection", output)
+        return output_data

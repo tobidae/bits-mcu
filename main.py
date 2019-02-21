@@ -8,17 +8,18 @@ import imutils
 import time
 import cv2
 
+
 def main():
     # Initialize the database
     db = database.Database()
 
     # Initialize the video stream
-    print("[INFO] starting video stream...")
+    print("[INFO] Starting video stream...")
     vs = VideoStream(src=0).start()
     # vs = VideoStream(usePiCamera=True).start()
     time.sleep(2.0)
 
-    # Initialize the rfid and pass in the database instance as a argument
+    # Initialize the rfid, barcode scanner and text recognition classes
     rfid_scanner = rfid.Rfid(db)
     bar_scanner = barcode_scanner.Scanner()
     grid_reknize = text_recognition.TextRecognition()
@@ -30,8 +31,10 @@ def main():
         frame = imutils.resize(frame, width=400)
 
         bar_scanner.run_scanner(frame)
-        grid_reknize.recognize(frame)
+        text_output = grid_reknize.recognize(frame)
         rfid_scanner.start_scanning()
+
+
 
         key = cv2.waitKey(1) & 0xFF
 
