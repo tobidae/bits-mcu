@@ -25,11 +25,21 @@ def main():
 
     # Initialize the rfid, barcode scanner and text recognition classes
     rfid_scanner = rfid.Rfid(db)
-    # bar_scanner = barcode_scanner.Scanner()
+    bar_scanner = barcode_scanner.Scanner()
     grid_reknize = text_recognition.TextRecognition()
 
     cur_sector = None
+    last_sector = None
     last_output = None
+    rfid_value = None
+
+    case_location = None
+    case_rfid = None
+    cur_reference = None
+    case_data = None
+    user_id = None
+
+    found_case = False
 
     # Listen to the kartQueue unique to the device for any orders that come in
     db.listen('kartQueue/{0}'.format(rfid_scanner.mac_id)).listen(kart_queue_listener)
@@ -40,27 +50,80 @@ def main():
         frame = vs.read()
         frame = imutils.resize(frame, width=400)
 
-        # bar_scanner.run_scanner(frame)
+        # Continuously call the bar scanner, OCR and RFID Scanner
         text_output = grid_reknize.recognize(frame)
-        # rfid_value = rfid_scanner.do_scan()
 
-        combined_output = '\t'.join(text_output)
-        print(combined_output)
-        if last_output != combined_output:
-            for sector in sectors:
-                if ('GRID' in combined_output or 'GR1D' in combined_output) and sector in combined_output:
-                    last_output = combined_output
-                    cur_sector = sector
-                    break
+        # Run bar and rfid scanner only if there is a case rfid
+        if case_rfid:
+            while not found_case:
+                print('[INFO] Searching for case...')
+                bar_value = bar_scanner.run_scanner(frame)
+                rfid_value = rfid_scanner.do_scan()
+                # update_case(rfid_value, location)
+                time.sleep(1)
 
-            if cur_sector:
+                if case_rfid == rfid_value:
+                    found_case = True
+
+            if found_case and user_id:
+                db.push('foundOrders/{0}'.format(user_id), {
+                    'timestamp': int(time.time()),
+                    'caseId': case_id,
+                    'locationFound': cur_sector
+                })
+
+        combined_output = ''.join(text_output)  # Combine the text to reduce runtime
+        if combined_output:
+            print(combined_output)
+
+        # If the last output is not the same as the combined text and there is a combined text
+        if last_output != combined_output and len(combined_output) > 0:
+            # Check if frame scanned has GRID or a variation in it, if it does check the for sector
+            if 'GRID' in combined_output or 'GR1D' in combined_output:
+                for sector in sectors:
+                    # If the sector text is in the output, set the current sector and break loop
+                    if sector in combined_output:
+                        last_output = combined_output
+                        cur_sector = sector
+                        break
+
+            # If there is a current sector and the last sector is not the same as the new one,
+            # Update the database with information of the kart's new sector
+            if cur_sector and last_sector != cur_sector:
                 db.update('kartInfo/{0}'.format(rfid_scanner.mac_id), {
                     'currentLocation': cur_sector
                 })
+                last_sector = cur_sector
                 cur_sector = None
 
+        # If the order queue for this cart is not empty, we got an order
+        # If the order
         if not order_queue.empty():
+            # Pop the queue and get a reference to the db event
+            cur_reference = order_queue.get()
 
+            data = cur_reference.data
+            path_list = db.parse_path(cur_reference.path)
+            push_key = path_list[2]  # Get the push key of the current event
+            kart_key = path_list[1]  # Get the unique id of the pi/device
+            print(path_list, push_key)
+
+            # Get the keys needed for the order
+            case_id = data.get('caseId')
+            user_id = data.get('userId')
+            print(case_id, user_id)
+
+            case_data = dict(get_case_info(case_id))
+            case_location = case_data['lastLocation']
+
+        # if the case and kart locations are different, add the order back in queue and move on
+        if case_location and cur_reference and case_location != last_sector:
+            print('[LOG] MOVING ON...')
+            order_queue.put(cur_reference)
+            continue
+        elif case_location and cur_reference and case_location == last_sector:
+            # The case and kart location is the same
+            case_rfid = case_data['rfid']
 
         key = cv2.waitKey(1) & 0xFF
 
@@ -85,23 +148,6 @@ def kart_queue_listener(event):
 
     order_queue.put(event)
 
-    path_list = db.parse_path(event.path)
-    push_key = path_list[2]     # Get the push key of the current event
-    kart_key = path_list[1]     # Get the unique id of the pi/device
-    print(path_list, push_key)
-
-    case_id = data.get('caseId')
-    user_id = data.get('userId')
-    print(case_id, user_id)
-
-    case_data = dict(get_case_info(case_id))
-
-    case_location = case_data['lastLocation']
-    kart_location = db.get('kartInfo/{0}/currentLocation'.format(kart_key))
-
-    if case_location != kart_location:
-        print('[LOG] MOVING ON...')
-
 
 def get_caseid_with_rfid(rf):
     # Pass in the table where the RFID and caseID relationship is stored
@@ -113,6 +159,10 @@ def get_case_info(caseid):
     # Pass in the table where the case info is stored
     # Returns details about the case
     return db.get('cases/{0}'.format(caseid))
+
+
+def update_case_location(case_id, new_location):
+    db.update('cases/{0}/lastLocation'.format(case_id), new_location)
 
 
 if __name__ == "__main__":
