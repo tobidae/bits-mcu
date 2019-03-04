@@ -10,8 +10,6 @@ class Scanner:
 
     @staticmethod
     def run_scanner(frame):
-        found = set()
-
         # find the barcodes in the frame and decode each of the barcodes
         barcodes = pyzbar.decode(frame)
         barcode_data = None
@@ -20,14 +18,17 @@ class Scanner:
         for barcode in barcodes:
             # the barcode data is a bytes object so if we want to draw it
             # on our output image we need to convert it to a string first
-            barcode_data = barcode.data.decode("utf-8")
-            barcode_type = barcode.type
-            barcode_data = ast.literal_eval(barcode_data)
+            raw_data = barcode.data.decode("utf-8")
+            raw_type = barcode.type
+            raw_data = ast.literal_eval(raw_data)
 
-            # if the barcode text is currently not in our CSV file, write
-            # the timestamp + barcode to disk and update the set
-            if barcode_data not in found:
-                print(datetime.datetime.now(), barcode_data, barcode_type)
-                found.add(barcode_data)
+            # if the barcode text is the dict containing app id and case id,
+            # break out of loop
+            if type(raw_data) is dict and raw_data['app'] is 'BITS':
+                print('[INFO]', datetime.datetime.now(), raw_data, raw_type)
+                barcode_data = raw_data
+                break
+            else:
+                print('[ERROR] Wrong QR data format')
 
         return barcode_data

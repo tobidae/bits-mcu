@@ -30,7 +30,6 @@ def main():
 
     cur_sector = None
     last_sector = None
-    last_output = None
     rfid_value = None
 
     case_location = None
@@ -42,7 +41,7 @@ def main():
     found_case = False
 
     # Listen to the kartQueue unique to the device for any orders that come in
-    db.listen('kartQueue/{0}'.format(rfid_scanner.mac_id)).listen(kart_queue_listener)
+    db.listen('kartQueues/{0}'.format(rfid_scanner.mac_id)).listen(kart_queue_listener)
 
     while True:
         # grab the frame from the threaded video stream and resize it to
@@ -56,14 +55,19 @@ def main():
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
             while not found_case:
-                print('[INFO] Searching for case...')
-                bar_value = bar_scanner.run_scanner(frame)
+                print('\nINFO] Searching for case...')
+                bar_data = bar_scanner.run_scanner(frame)
                 rfid_value = rfid_scanner.do_scan()
                 # update_case(rfid_value, location)
                 time.sleep(1)
 
                 if case_rfid == rfid_value:
                     found_case = True
+
+                # If we reach the end of the shelf, scan a bar code with value end.
+                if bar_data and bar_data['location'] and bar_data['location'] is 'end':
+                    print('\n[INFO] Case not found, moving on...')
+                    break
 
             if found_case and user_id:
                 db.push('foundOrders/{0}'.format(user_id), {
@@ -73,17 +77,20 @@ def main():
                 })
 
         combined_output = ''.join(text_output)  # Combine the text to reduce runtime
-        if combined_output:
-            print(combined_output)
 
         # If the last output is not the same as the combined text and there is a combined text
-        if last_output != combined_output and len(combined_output) > 0:
+        if len(combined_output) > 0:
             # Check if frame scanned has GRID or a variation in it, if it does check the for sector
             if 'GRID' in combined_output or 'GR1D' in combined_output:
+                if 'GRID' in combined_output:
+                    combined_output = combined_output.replace('GRID', '')
+                elif 'GR1D' in combined_output:
+                    combined_output = combined_output.replace('GR1D', '')
+
                 for sector in sectors:
                     # If the sector text is in the output, set the current sector and break loop
                     if sector in combined_output:
-                        last_output = combined_output
+                        print('\n[INFO] In sector', sector)
                         cur_sector = sector
                         break
 
@@ -97,28 +104,29 @@ def main():
                 cur_sector = None
 
         # If the order queue for this cart is not empty, we got an order
-        # If the order
         if not order_queue.empty():
             # Pop the queue and get a reference to the db event
             cur_reference = order_queue.get()
 
             data = cur_reference.data
             path_list = db.parse_path(cur_reference.path)
-            push_key = path_list[2]  # Get the push key of the current event
-            kart_key = path_list[1]  # Get the unique id of the pi/device
-            print(path_list, push_key)
+            push_key = path_list[0]  # Get the push key of the current event
+            print("\n[INFO] New Order Key:", push_key)
 
             # Get the keys needed for the order
             case_id = data.get('caseId')
             user_id = data.get('userId')
-            print(case_id, user_id)
+            print('[INFO] CaseId and UserId:', case_id, user_id)
 
+            # Get the info about the case like lastLocation
             case_data = dict(get_case_info(case_id))
             case_location = case_data['lastLocation']
 
-        # if the case and kart locations are different, add the order back in queue and move on
+        # If there is a case location, cur_ref is not null and the
+        # starting point for case and kart locations are different,
+        # add the order back in queue and move on till we are at the case location
         if case_location and cur_reference and case_location != last_sector:
-            print('[LOG] MOVING ON...')
+            print('\n[LOG] MOVING ON...')
             order_queue.put(cur_reference)
             continue
         elif case_location and cur_reference and case_location == last_sector:
@@ -162,7 +170,7 @@ def get_case_info(caseid):
 
 
 def update_case_location(case_id, new_location):
-    db.update('cases/{0}/lastLocation'.format(case_id), new_location)
+    return db.update('cases/{0}/lastLocation'.format(case_id), new_location)
 
 
 if __name__ == "__main__":
