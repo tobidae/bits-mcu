@@ -19,12 +19,14 @@ class Scanner:
             # the barcode data is a bytes object so if we want to draw it
             # on our output image we need to convert it to a string first
             raw_data = barcode.data.decode("utf-8")
+            raw_data = raw_data.replace('\n', '')
             raw_type = barcode.type
-            raw_data = ast.literal_eval(raw_data)
+            if '{' in raw_data and '}' in raw_data:
+                raw_data = ast.literal_eval(raw_data)
 
             # if the barcode text is the dict containing app id and case id,
             # break out of loop
-            if type(raw_data) is dict and raw_data['app'] is 'BITS':
+            if type(raw_data) is dict and raw_data['app'] and raw_data['app'] == 'BITS':
                 print('[INFO]', datetime.datetime.now(), raw_data, raw_type)
                 barcode_data = raw_data
                 break

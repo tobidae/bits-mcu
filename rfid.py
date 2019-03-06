@@ -3,8 +3,6 @@
 import time
 import serial
 import binascii
-import sched
-import uuid
 import platform
 
 """
@@ -18,9 +16,6 @@ Check table and get the most recent push or position.
 class Rfid:
     def __init__(self, firedb):
         self.database = firedb
-
-        # Get the MAC Address of the device running program. Used to uniquely identify each kart
-        self.mac_id = hex(uuid.getnode())
 
         # Open Serial, if there is an exception, try the next port
         try:
@@ -40,7 +35,7 @@ class Rfid:
         size = self.ser.inWaiting()
         if size:
             rfid_value = self.convert_scan(size)
-            print("Scanned ID: {0}".format(rfid_value))
+            print("\n[INFO] Scanned ID: {0}".format(rfid_value))
             return rfid_value
             # print('=='*10)
         # self.s.enter(1, 1, self.do_scan)
