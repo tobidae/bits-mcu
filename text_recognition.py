@@ -145,7 +145,7 @@ class TextRecognition:
             # wish to use the LSTM neural net model for OCR, and finally
             # (3) an OEM value, in this case, 7 which implies that we are
             # treating the ROI as a single line of text
-            config = "-l eng --oem 0 -c tessedit_char_whitelist=123ABCDIGR --psm 8"
+            config = "-l eng --oem 0 -c tessedit_char_whitelist=123ABCDEIGNR --psm 8"
             text = pytesseract.image_to_string(roi, config=config)
 
             # add the bounding box coordinates and OCR'd text to the list

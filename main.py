@@ -1,4 +1,4 @@
-import database
+import firebase
 import text_recognition
 import rfid
 import barcode_scanner
@@ -14,7 +14,8 @@ import uuid
 grids = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
 
 # Initialize the database
-db = database.Database()
+db = firebase.Database()
+msg = firebase.CloudMessaging()
 order_queue = queue.Queue(maxsize=20)
 
 
@@ -34,35 +35,40 @@ def main():
     device_id = hex(uuid.getnode())
 
     cur_grid = None
+    checked_queue = False
     last_grid = db.get('kartInfo/{0}/currentLocation'.format(device_id))
     scanned_rfid = None
-    checked_queue = False
 
+    order_reference = None
+    order_push_key = None
+    case_data = None
+    case_id = None
     case_location = None
     case_rfid = None
-    case_id = None
-    order_reference = None
-    case_data = None
     user_id = None
-    order_pusk_key = None
+    user_name = None
 
-    found_case = False
     end_of_grid = False
+    found_case = False
+
+    # Debug holders
+    is_searching_for_case = False
 
     # Listen to the kartQueue unique to the device for any orders that come in
     db.listen('kartQueues/{0}'.format(device_id)).listen(kart_queue_listener)
 
     # Reset the variables to their default state
     def reset_vars():
+        nonlocal order_reference
+        nonlocal order_push_key
         nonlocal scanned_rfid
         nonlocal checked_queue
+        nonlocal case_data
+        nonlocal case_id
         nonlocal case_location
         nonlocal case_rfid
-        nonlocal case_id
-        nonlocal order_reference
-        nonlocal case_data
         nonlocal user_id
-        nonlocal order_pusk_key
+        nonlocal user_name
         nonlocal found_case
         nonlocal end_of_grid
 
@@ -75,7 +81,8 @@ def main():
         order_reference = None
         case_data = None
         user_id = None
-        order_pusk_key = None
+        user_name = None
+        order_push_key = None
 
         found_case = False
         end_of_grid = False
@@ -92,7 +99,10 @@ def main():
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
             while not found_case and not end_of_grid:
-                print('[INFO] Searching for case...', case_rfid)
+                if not is_searching_for_case:
+                    print('[INFO] Searching for case...', case_rfid)
+                    is_searching_for_case = True
+
                 scanned_rfid = rfid_scanner.do_scan()
 
                 # Get the frames in this loop since outside frame is not accessible
@@ -104,14 +114,18 @@ def main():
                 time.sleep(0.1)
 
                 if case_rfid == scanned_rfid:
-                    print('[INFO] Case found via RFID')
+                    print('[INFO] Case found via RFID, sending order to {0}'.format(user_name))
                     found_case = True
                     break
 
                 if scanned_rfid and case_rfid != scanned_rfid:
                     print('[ERROR] Case RFID {0} does not match scanned RFID {1}'.format(case_rfid, scanned_rfid))
                     wrong_case_id = get_caseid_with_rfid(scanned_rfid)
+                    wrong_case_data = get_case_info(wrong_case_id)
+                    print('[INFO] Updating location of {0} to Grid {1}'.format(wrong_case_data['name'], last_grid))
+                    print('='*60)
                     update_case_location(wrong_case_id, last_grid)
+                    is_searching_for_case = False
 
                 if bar_data:
                     if bar_data['caseId']:
@@ -119,19 +133,19 @@ def main():
 
                 combined_output = ''.join(text_output)
 
+                print(combined_output)
                 # Kart is at the end of the grid, set variable to true to break loop
                 if len(combined_output) > 0 and check_end(combined_output):
                     print('[INFO] Kart is at end of grid and case not found, moving on...')
                     end_of_grid = True
+                    continue
 
             # Once the case was found and there is a user requesting it,
             # Update the found order table
-            if found_case and user_id:
-                db.update('userPastOrders/{0}/{1}'.format(user_id, order_pusk_key), {
-                    'foundCaseTimestamp': int(time.time()),
-                    'completedByKart': True
-                })
+            if found_case and user_id and order_push_key:
+                case_found(user_id, order_push_key)
                 reset_vars()
+                continue
 
         combined_output = ''.join(text_output)  # Combine the text to reduce runtime
 
@@ -162,32 +176,42 @@ def main():
             # Get the keys needed for the order
             case_id = data.get('caseId')
             user_id = data.get('userId')
-            order_pusk_key = data.get('puskKey')
+            order_push_key = data.get('pushKey')
 
             # Get the info about the case like lastLocation
             case_data = dict(get_case_info(case_id))
             case_location = case_data['lastLocation']
 
+            user_data = dict(get_user_info(user_id))
+            user_name = user_data['displayName']
+
+            print('[INFO] Order removed from queue now working on it...')
+
+            # Tell the user that the kart has received its order
+            db.update('userPastOrders/{0}/{1}'.format(user_id, order_push_key), {
+                'kartReceivedOrder': True
+            })
+
         if order_reference and case_data and not case_rfid:
             case_rfid = case_data['rfid']
-            print('[INFO] RFID for {0} is'.format(case_data['name']), case_rfid)
+            print('[INFO] RFID for {0} is {1}\n'.format(case_data['name'], case_rfid), '='*60)
 
         # If there is a case location, cur_ref is not null and the
         # starting point for case and kart locations are different,
         # add the order back in queue and move on till we are at the case location
         if case_location and order_reference and case_location != last_grid and checked_queue:
-            print('\n[LOG] Case and Kart are not in the same grid, beginning search...')
+            print('[INFO] Case and Kart are not in the same grid, beginning search...\n', '='*60)
             checked_queue = False
         elif case_location and order_reference and case_location == last_grid:
-            print('\n[LOG] Case and Kart are in the same grid, beginning search...')
+            print('[INFO] Case and Kart are in the same grid, beginning search...\n', '='*60)
             checked_queue = False
+            continue
 
         key = cv2.waitKey(1) & 0xFF
 
         # if the `q` key was pressed, break from the loop
         if key == ord("q"):
             break
-
 
 
 """
@@ -222,11 +246,26 @@ def get_case_info(caseid):
     return db.get('cases/{0}'.format(caseid))
 
 
+def get_user_info(userid):
+    # Get the user's info from the database
+    # Returns details about the user
+    return db.get('userInfo/{0}'.format(userid))
+
+
 def update_case_location(case_id, new_location):
-    print('[INFO] Updating location of Case {0} to Grid {1}'.format(case_id, new_location))
     return db.update('cases/{0}'.format(case_id), {
         'lastLocation': new_location
     })
+
+
+def case_found(user_id, order_push_key):
+    db.update('userPastOrders/{0}/{1}'.format(user_id, order_push_key), {
+        'foundCaseTimestamp': int(time.time()),
+        'completedByKart': True
+    })
+    user_token = db.get('userInfo/{0}/notificationToken'.format(user_id))
+    message = 'Great news! Your order is on its way.'
+    msg.send_message(user_token, message)
 
 
 def check_end(combined_output):

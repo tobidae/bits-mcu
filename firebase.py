@@ -1,6 +1,5 @@
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+from firebase_admin import credentials, db, messaging
 
 
 class Database:
@@ -47,3 +46,17 @@ class Database:
                 called = True
                 return None
         return wrapper
+
+
+class CloudMessaging:
+    def __init__(self):
+        self.cred = credentials.Certificate("helpers/google-services.json")
+        self.dbApp = firebase_admin.initialize_app(self.cred, {'databaseURL': 'https://boeing-bits.firebaseio.com/'})
+
+    def send_message(self, user_token, title, *args, **kwargs):
+        if not user_token:
+            return None
+
+        body = kwargs.get('body', None)
+        message = messaging.Message(notification=messaging.Notification(title, body), token=user_token)
+        return messaging.send(message)

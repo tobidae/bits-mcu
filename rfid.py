@@ -23,7 +23,7 @@ class Rfid:
             if platform.system() == 'Windows':
                 self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
             elif platform.system() == 'Darwin':
-                self.ser = serial.Serial(port='/dev/tty.usbserial-1410', baudrate=9600, timeout=.0001)
+                self.ser = serial.Serial(port='/dev/tty.usbserial-1450', baudrate=9600, timeout=.0001)
             else:
                 self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
         except serial.SerialException as msg:
