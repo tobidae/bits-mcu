@@ -27,7 +27,7 @@ class Scanner:
             # if the barcode text is the dict containing app id and case id,
             # break out of loop
             if type(raw_data) is dict and raw_data['app'] and raw_data['app'] == 'BITS':
-                print('[INFO]', datetime.datetime.now(), raw_data, raw_type)
+                # print('[INFO]', datetime.datetime.now(), raw_data, raw_type)
                 barcode_data = raw_data
                 break
             else:

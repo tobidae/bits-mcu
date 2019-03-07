@@ -35,10 +35,7 @@ class Rfid:
         size = self.ser.inWaiting()
         if size:
             rfid_value = self.convert_scan(size)
-            print("\n[INFO] Scanned ID: {0}".format(rfid_value))
             return rfid_value
-            # print('=='*10)
-        # self.s.enter(1, 1, self.do_scan)
         return None
 
     # Reads the size byte, converts it to hex then decodes to ascii

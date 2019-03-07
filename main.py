@@ -31,6 +31,8 @@ def main():
     bar_scanner = barcode_scanner.Scanner()
     grid_reknize = text_recognition.TextRecognition()
 
+    print('[INFO] Done loading sub-modules...\n', '='*60)
+
     # Get the MAC Address of the device running program. Used to uniquely identify each kart
     device_id = hex(uuid.getnode())
 
@@ -53,6 +55,8 @@ def main():
 
     # Debug holders
     is_searching_for_case = False
+    is_case_at_kart_debug = False
+    is_case_not_at_kart_debug = False
 
     # Listen to the kartQueue unique to the device for any orders that come in
     db.listen('kartQueues/{0}'.format(device_id)).listen(kart_queue_listener)
@@ -71,6 +75,9 @@ def main():
         nonlocal user_name
         nonlocal found_case
         nonlocal end_of_grid
+        nonlocal is_searching_for_case
+        nonlocal is_case_at_kart_debug
+        nonlocal is_case_not_at_kart_debug
 
         scanned_rfid = None
         checked_queue = False
@@ -87,6 +94,10 @@ def main():
         found_case = False
         end_of_grid = False
 
+        is_searching_for_case = False
+        is_case_at_kart_debug = False
+        is_case_not_at_kart_debug = False
+
     while True:
         # grab the frame from the threaded video stream and resize it to
         # have a maximum width of 400 pixels
@@ -98,6 +109,7 @@ def main():
 
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
+            previous_rfid = None
             while not found_case and not end_of_grid:
                 if not is_searching_for_case:
                     print('[INFO] Searching for case...', case_rfid)
@@ -105,20 +117,25 @@ def main():
 
                 scanned_rfid = rfid_scanner.do_scan()
 
+                # Just don't print the same rfid twice, once is enough
+                if scanned_rfid and scanned_rfid != previous_rfid:
+                    print("\n[INFO] Scanned ID: {0}".format(scanned_rfid))
+
                 # Get the frames in this loop since outside frame is not accessible
                 scan_frame = vs.read()
                 scan_frame = imutils.resize(scan_frame, width=400)
 
                 text_output = grid_reknize.recognize(scan_frame)
                 bar_data = bar_scanner.run_scanner(scan_frame)
-                time.sleep(0.1)
+                time.sleep(0.3)
 
                 if case_rfid == scanned_rfid:
                     print('[INFO] Case found via RFID, sending order to {0}'.format(user_name))
                     found_case = True
                     break
 
-                if scanned_rfid and case_rfid != scanned_rfid:
+                if scanned_rfid and case_rfid != scanned_rfid and scanned_rfid != previous_rfid:
+                    previous_rfid = scanned_rfid
                     print('[ERROR] Case RFID {0} does not match scanned RFID {1}'.format(case_rfid, scanned_rfid))
                     wrong_case_id = get_caseid_with_rfid(scanned_rfid)
                     wrong_case_data = get_case_info(wrong_case_id)
@@ -128,14 +145,27 @@ def main():
                     is_searching_for_case = False
 
                 if bar_data:
-                    if bar_data['caseId']:
-                        print('[INFO] Case', bar_data['caseId'])
+                    scanned_case_id = bar_data['caseId']
+                    if scanned_case_id:
+                        scanned_case_data = get_case_info(scanned_case_id)
+                        scanned_case_name = scanned_case_data['name']
+                        print('[INFO] {0} QR code was scanned'.format(scanned_case_name))
+                        print(scanned_case_name)
+
+                        update_case_location(scanned_case_id, last_grid)
+                        if scanned_case_id == case_id:
+                            print('[INFO] {0} was found via QR, sending order to {1}\n'
+                                  .format(scanned_case_name, user_name), '='*60)
+                            found_case = True
+                            break
+                        else:
+                            print('[INFO] {0} does not match the right QR\n'.format(scanned_case_name), '='*60)
 
                 combined_output = ''.join(text_output)
 
-                print(combined_output)
                 # Kart is at the end of the grid, set variable to true to break loop
                 if len(combined_output) > 0 and check_end(combined_output):
+                    print('='*60)
                     print('[INFO] Kart is at end of grid and case not found, moving on...')
                     end_of_grid = True
                     continue
@@ -185,7 +215,7 @@ def main():
             user_data = dict(get_user_info(user_id))
             user_name = user_data['displayName']
 
-            print('[INFO] Order removed from queue now working on it...')
+            print('[INFO] Kart is starting scan from Grid {0}'.format(case_location))
 
             # Tell the user that the kart has received its order
             db.update('userPastOrders/{0}/{1}'.format(user_id, order_push_key), {
@@ -200,10 +230,14 @@ def main():
         # starting point for case and kart locations are different,
         # add the order back in queue and move on till we are at the case location
         if case_location and order_reference and case_location != last_grid and checked_queue:
-            print('[INFO] Case and Kart are not in the same grid, beginning search...\n', '='*60)
+            if not is_case_not_at_kart_debug:
+                print('[INFO] Case and Kart are not in the same grid, beginning search...\n', '='*60)
+                is_case_not_at_kart_debug = True
             checked_queue = False
         elif case_location and order_reference and case_location == last_grid:
-            print('[INFO] Case and Kart are in the same grid, beginning search...\n', '='*60)
+            if not is_case_at_kart_debug:
+                print('[INFO] Case and Kart are in the same grid, beginning search...\n', '='*60)
+                is_case_at_kart_debug = True
             checked_queue = False
             continue
 
