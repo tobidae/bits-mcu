@@ -18,6 +18,9 @@ db = firebase.Database()
 msg = firebase.CloudMessaging()
 order_queue = queue.Queue(maxsize=20)
 
+# Get the MAC Address of the device running program. Used to uniquely identify each kart
+device_id = hex(uuid.getnode())
+
 
 def main():
     # Initialize the video stream
@@ -32,9 +35,6 @@ def main():
     grid_reknize = text_recognition.TextRecognition()
 
     print('[INFO] Done loading sub-modules...\n', '='*60)
-
-    # Get the MAC Address of the device running program. Used to uniquely identify each kart
-    device_id = hex(uuid.getnode())
 
     cur_grid = None
     checked_queue = False
@@ -143,7 +143,8 @@ def main():
 
                 if scanned_rfid and case_rfid != scanned_rfid and scanned_rfid != previous_rfid:
                     previous_rfid = scanned_rfid
-                    print('[ERROR] Case RFID {0} does not match scanned RFID {1}'.format(case_rfid, scanned_rfid))
+                    print('{0}[ERROR] Case RFID {1} does not match scanned RFID {2}'
+                          .format(bcolors.WARNING, case_rfid, scanned_rfid))
                     wrong_case_id = get_caseid_with_rfid(scanned_rfid)
                     wrong_case_data = get_case_info(wrong_case_id)
                     print('[INFO] Updating location of {0} to Grid {1}'.format(wrong_case_data['name'], last_grid))
@@ -253,6 +254,7 @@ def main():
 
             user_data = dict(get_user_info(user_id))
             user_name = user_data['displayName']
+            user_pickup_location = data.get('pickupLocation')
 
             print('[INFO] Kart is starting scan from Grid {0}'.format(case_location))
 
@@ -359,6 +361,7 @@ def case_delivered(user_id, order_push_key, location):
     message = 'Woot! Your order was dropped off at {0}'.format(location)
     body = 'Scan the RFID on the case to confirm pickup'
     msg.send_message(user_token, message, body=body)
+    db.delete('kartQueues/{0}/{1}'.format(device_id, order_push_key))
 
 
 def check_end(combined_output):
@@ -388,6 +391,17 @@ def check_grid(combined_output):
                 print('\n[INFO] In grid', grid)
                 return grid
     return None
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 
 if __name__ == "__main__":
