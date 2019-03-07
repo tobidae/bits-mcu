@@ -1,5 +1,4 @@
 firebase-admin
-serial
 pyserial
 numpy
 pyzbar

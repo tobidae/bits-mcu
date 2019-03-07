@@ -60,7 +60,6 @@ def main():
     is_case_at_kart_debug = False
     is_case_not_at_kart_debug = False
 
-
     # Listen to the kartQueue unique to the device for any orders that come in
     db.listen('kartQueues/{0}'.format(device_id)).listen(kart_queue_listener)
 
@@ -290,10 +289,12 @@ def main():
 """
 { 
     caseId: caseId,
-    userId: userId
+    userId: userId,
+    pushKey: pushKey,
+    pickupLocation: pickupLocation
 }
-When new data is pushed to the cart queue, trigger this listener that gets the location of the cart,
-location of the user and "goes" to the cart
+When new data is pushed to the cart queue, trigger this listener that gets the location of the cart and
+location of the user. Ignore the first call when the app boots, always resolves to no data
 """
 
 
