@@ -48,15 +48,18 @@ def main():
     case_location = None
     case_rfid = None
     user_id = None
+    user_pickup_location = None
     user_name = None
 
     end_of_grid = False
     found_case = False
+    transporting_to_user = False
 
     # Debug holders
     is_searching_for_case = False
     is_case_at_kart_debug = False
     is_case_not_at_kart_debug = False
+
 
     # Listen to the kartQueue unique to the device for any orders that come in
     db.listen('kartQueues/{0}'.format(device_id)).listen(kart_queue_listener)
@@ -72,12 +75,14 @@ def main():
         nonlocal case_location
         nonlocal case_rfid
         nonlocal user_id
+        nonlocal user_pickup_location
         nonlocal user_name
         nonlocal end_of_grid
         nonlocal found_case
         nonlocal is_searching_for_case
         nonlocal is_case_at_kart_debug
         nonlocal is_case_not_at_kart_debug
+        nonlocal transporting_to_user
 
         scanned_rfid = None
         checked_queue = False
@@ -89,6 +94,7 @@ def main():
         case_location = None
         case_rfid = None
         user_id = None
+        user_pickup_location = None
         user_name = None
 
         found_case = False
@@ -97,6 +103,8 @@ def main():
         is_searching_for_case = False
         is_case_at_kart_debug = False
         is_case_not_at_kart_debug = False
+
+        transporting_to_user = False
 
     while True:
         # grab the frame from the threaded video stream and resize it to
@@ -150,7 +158,6 @@ def main():
                         scanned_case_data = get_case_info(scanned_case_id)
                         scanned_case_name = scanned_case_data['name']
                         print('[INFO] {0} QR code was scanned'.format(scanned_case_name))
-                        print(scanned_case_name)
 
                         update_case_location(scanned_case_id, last_grid)
                         if scanned_case_id == case_id:
@@ -172,18 +179,47 @@ def main():
 
             # Once the case was found and there is a user requesting it,
             # Update the found order table
-            if found_case and user_id and order_push_key:
+            if found_case and user_id and order_push_key and not transporting_to_user:
                 case_found(user_id, order_push_key)
-                print('='*60)
+                transporting_to_user = True
                 print('='*60)
                 # TODO: May have to enable this for demo
                 # reset_vars()
-                continue
+                # continue
 
-            # After the order is found, the order needs to be transported to the user
-            # Since kart is in transport mode only, it simply needs the OCR
+        # After the order is found, the order needs to be transported to the user
+        # Once kart is in transport mode only, it simply needs the OCR
+        while found_case and transporting_to_user and last_grid != user_pickup_location:
+            # Get the frames in this loop since outside frame is not accessible
+            scan_frame = vs.read()
+            scan_frame = imutils.resize(scan_frame, width=400)
 
-        combined_output = ''.join(text_output)  # Combine the text to reduce runtime
+            text_output = grid_reknize.recognize(scan_frame)
+            time.sleep(0.3)
+
+            combined_output = ''.join(text_output)
+
+            # If the last output is not the same as the combined text and there is a combined text
+            if len(combined_output) > 0:
+                cur_grid = check_grid(combined_output)
+
+                # If there is a current grid and the last grid is not the same as the new one,
+                # Update the database with information of the kart's new grid and set end of grid to false
+                if cur_grid and last_grid != cur_grid:
+                    update_kart_location(device_id, cur_grid)
+                    last_grid = cur_grid
+                    cur_grid = None
+                    end_of_grid = False
+
+                # If the last grid is the same as the user pickup location,
+                # Update the database as delivered.
+                if last_grid and last_grid == user_pickup_location:
+                    print('[INFO] Now at {0}\'s location Grid {1}. Delivering case'.format(user_name, last_grid))
+                    case_delivered(user_id, order_push_key, last_grid)
+                    reset_vars()
+                    continue
+
+        combined_output = ''.join(text_output)  # Combine the text to reduce computation runtime
 
         # If the last output is not the same as the combined text and there is a combined text
         if len(combined_output) > 0:
@@ -192,10 +228,7 @@ def main():
             # If there is a current grid and the last grid is not the same as the new one,
             # Update the database with information of the kart's new grid and set end of grid to false
             if cur_grid and last_grid != cur_grid:
-                print('[INFO] Kart is now in Grid ', cur_grid)
-                db.update('kartInfo/{0}'.format(device_id), {
-                    'currentLocation': cur_grid
-                })
+                update_kart_location(device_id, cur_grid)
                 last_grid = cur_grid
                 cur_grid = None
                 end_of_grid = False
@@ -298,14 +331,32 @@ def update_case_location(case_id, new_location):
     })
 
 
+def update_kart_location(kart_id, new_location):
+    print('[INFO] Kart is now in Grid ', new_location)
+    db.update('kartInfo/{0}'.format(kart_id), {
+        'currentLocation': new_location
+    })
+
+
 def case_found(user_id, order_push_key):
     db.update('userPastOrders/{0}/{1}'.format(user_id, order_push_key), {
-        'foundCaseTimestamp': int(time.time()),
-        'completedByKart': True
+        'foundCaseTimestamp': int(time.time()) * 1000,
+        'isTransporting': True
     })
     user_token = db.get('userInfo/{0}/notificationToken'.format(user_id))
     message = 'Great news! Your order is on its way.'
     msg.send_message(user_token, message)
+
+
+def case_delivered(user_id, order_push_key, location):
+    db.update('userPastOrders/{0}/{1}'.format(user_id, order_push_key), {
+        'completionTimestamp': int(time.time()) * 1000,
+        'completedByKart': True
+    })
+    user_token = db.get('userInfo/{0}/notificationToken'.format(user_id))
+    message = 'Woot! Your order was dropped off at {0}'.format(location)
+    body = 'Scan the RFID on the case to confirm pickup'
+    msg.send_message(user_token, message, body=body)
 
 
 def check_end(combined_output):

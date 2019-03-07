@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
+    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="saving point of working code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -39,7 +39,7 @@
           <entry key="jpg" value="9" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="65" />
+          <entry key="py" value="66" />
           <entry key="txt" value="8" />
         </counts>
       </usages-collector>
@@ -49,7 +49,7 @@
           <entry key="Ini" value="3" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="65" />
+          <entry key="Python" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -58,16 +58,16 @@
           <entry key="gitignore" value="14" />
           <entry key="ini" value="279" />
           <entry key="md" value="475" />
-          <entry key="py" value="13461" />
-          <entry key="txt" value="685" />
+          <entry key="py" value="14391" />
+          <entry key="txt" value="716" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="279" />
           <entry key="Markdown" value="475" />
-          <entry key="PLAIN_TEXT" value="715" />
-          <entry key="Python" value="13461" />
+          <entry key="PLAIN_TEXT" value="746" />
+          <entry key="Python" value="14391" />
         </counts>
       </usages-collector>
     </session>
@@ -77,27 +77,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1061">
-              <caret line="89" column="24" lean-forward="true" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+            <state relative-caret-position="618">
+              <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1551945153651" expanded="true" signature="10521:10524" ph="..." />
-                <marker date="1551945153651" expanded="true" signature="10711:11045" ph="..." />
-                <marker date="1551945153651" expanded="true" signature="11350:11533" ph="..." />
-                <marker date="1551945153651" expanded="true" signature="12157:12176" ph="..." />
+                <marker date="1551954007908" expanded="true" signature="12310:12313" ph="..." />
+                <marker date="1551954007908" expanded="true" signature="12563:12661" ph="..." />
+                <marker date="1551954007908" expanded="true" signature="12701:13524" ph="..." />
+                <marker date="1551954007908" expanded="true" signature="13829:14012" ph="..." />
+                <marker date="1551954007908" expanded="true" signature="14636:14655" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="113" selection-start-line="7" selection-start-column="113" selection-end-line="7" selection-end-column="113" />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -105,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rfid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
+            <state relative-caret-position="537">
               <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
@@ -117,9 +106,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/firebase.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="604">
+              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <marker date="1551913945000" expanded="true" signature="333:339" ph="..." />
+                <marker date="1551913945000" expanded="true" signature="988:1030" ph="..." />
+                <marker date="1551913945000" expanded="true" signature="1428:1429" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/barcode_scanner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
+            <state relative-caret-position="450">
               <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
               <folding>
                 <element signature="e#32#57#0" expanded="true" />
@@ -158,6 +162,7 @@
       <find>='</find>
       <find>searc</find>
       <find>case_f</find>
+      <find>end_of_grid</find>
     </findStrings>
     <replaceStrings>
       <replace>text_recognition</replace>
@@ -514,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551923534636</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="saving point of working code.">
+      <created>1551945615482</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1551945615483</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -535,7 +547,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32857144" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39591837" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.39591837" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.15918367" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -584,7 +596,8 @@
     <MESSAGE value="check qr data type, scan rfid and print logs" />
     <MESSAGE value="added messaging from kart, one time logging" />
     <MESSAGE value="print qr and info" />
-    <option name="LAST_COMMIT_MESSAGE" value="print qr and info" />
+    <MESSAGE value="saving point of working code." />
+    <option name="LAST_COMMIT_MESSAGE" value="saving point of working code." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -723,31 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1551913945000" expanded="true" signature="333:339" ph="..." />
-            <marker date="1551913945000" expanded="true" signature="988:1030" ph="..." />
-            <marker date="1551913945000" expanded="true" signature="1428:1429" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rfid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding>
-            <element signature="e#23#34#0" expanded="true" />
-            <marker date="1551922677780" expanded="true" signature="1148:1150" ph="..." />
-            <marker date="1551922677780" expanded="true" signature="1354:1356" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -760,7 +748,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/barcode_scanner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="450">
           <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
           <folding>
             <element signature="e#32#57#0" expanded="true" />
@@ -768,16 +756,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/firebase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1551913945000" expanded="true" signature="333:339" ph="..." />
+            <marker date="1551913945000" expanded="true" signature="988:1030" ph="..." />
+            <marker date="1551913945000" expanded="true" signature="1428:1429" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rfid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding>
+            <element signature="e#23#34#0" expanded="true" />
+            <marker date="1551922677780" expanded="true" signature="1148:1150" ph="..." />
+            <marker date="1551922677780" expanded="true" signature="1354:1356" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1061">
-          <caret line="89" column="24" lean-forward="true" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+        <state relative-caret-position="618">
+          <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1551945153651" expanded="true" signature="10521:10524" ph="..." />
-            <marker date="1551945153651" expanded="true" signature="10711:11045" ph="..." />
-            <marker date="1551945153651" expanded="true" signature="11350:11533" ph="..." />
-            <marker date="1551945153651" expanded="true" signature="12157:12176" ph="..." />
+            <marker date="1551954007908" expanded="true" signature="12310:12313" ph="..." />
+            <marker date="1551954007908" expanded="true" signature="12563:12661" ph="..." />
+            <marker date="1551954007908" expanded="true" signature="12701:13524" ph="..." />
+            <marker date="1551954007908" expanded="true" signature="13829:14012" ph="..." />
+            <marker date="1551954007908" expanded="true" signature="14636:14655" ph="..." />
           </folding>
         </state>
       </provider>
