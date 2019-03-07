@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="saving point of working code.">
+    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -40,7 +40,7 @@
           <entry key="md" value="3" />
           <entry key="png" value="1" />
           <entry key="py" value="66" />
-          <entry key="txt" value="8" />
+          <entry key="txt" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -48,7 +48,7 @@
           <entry key="Image" value="10" />
           <entry key="Ini" value="3" />
           <entry key="Markdown" value="3" />
-          <entry key="PLAIN_TEXT" value="11" />
+          <entry key="PLAIN_TEXT" value="12" />
           <entry key="Python" value="66" />
         </counts>
       </usages-collector>
@@ -58,16 +58,16 @@
           <entry key="gitignore" value="14" />
           <entry key="ini" value="279" />
           <entry key="md" value="475" />
-          <entry key="py" value="14391" />
-          <entry key="txt" value="716" />
+          <entry key="py" value="14555" />
+          <entry key="txt" value="755" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="279" />
           <entry key="Markdown" value="475" />
-          <entry key="PLAIN_TEXT" value="746" />
-          <entry key="Python" value="14391" />
+          <entry key="PLAIN_TEXT" value="785" />
+          <entry key="Python" value="14555" />
         </counts>
       </usages-collector>
     </session>
@@ -77,15 +77,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
+            <state relative-caret-position="304">
+              <caret line="216" column="33" lean-forward="true" selection-start-line="216" selection-start-column="33" selection-end-line="216" selection-end-column="33" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1551954007908" expanded="true" signature="12310:12313" ph="..." />
-                <marker date="1551954007908" expanded="true" signature="12563:12661" ph="..." />
-                <marker date="1551954007908" expanded="true" signature="12701:13524" ph="..." />
-                <marker date="1551954007908" expanded="true" signature="13829:14012" ph="..." />
-                <marker date="1551954007908" expanded="true" signature="14636:14655" ph="..." />
+                <element signature="e#3271#6743#0" />
+                <marker date="1551957416199" expanded="true" signature="12451:12454" ph="..." />
+                <marker date="1551957416199" expanded="true" signature="12704:12802" ph="..." />
+                <marker date="1551957416199" expanded="true" signature="12842:13665" ph="..." />
+                <marker date="1551957416199" expanded="true" signature="13970:14153" ph="..." />
+                <marker date="1551957416199" expanded="true" signature="14777:14796" ph="..." />
               </folding>
             </state>
           </provider>
@@ -180,7 +181,6 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/barcode_scanner_video.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/helpers/Readme-Secondly.txt" />
         <option value="$PROJECT_DIR$/config.ini" />
@@ -189,6 +189,7 @@
         <option value="$PROJECT_DIR$/firebase.py" />
         <option value="$PROJECT_DIR$/barcode_scanner.py" />
         <option value="$PROJECT_DIR$/rfid.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -526,14 +527,28 @@
       <option name="project" value="LOCAL" />
       <updated>1551945615483</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="transporting to user code">
+      <created>1551954024755</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1551954024755</updated>
+    </task>
+    <task id="LOCAL-00026" summary="more comments">
+      <created>1551956111791</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1551956111791</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15995117" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15995117" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -547,7 +562,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32857144" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39591837" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.15918367" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.15918367" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -597,7 +612,9 @@
     <MESSAGE value="added messaging from kart, one time logging" />
     <MESSAGE value="print qr and info" />
     <MESSAGE value="saving point of working code." />
-    <option name="LAST_COMMIT_MESSAGE" value="saving point of working code." />
+    <MESSAGE value="transporting to user code" />
+    <MESSAGE value="more comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="more comments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -660,13 +677,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/images/example_05.jpg" />
     <entry file="file://$PROJECT_DIR$/images/example_04.jpg" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/barcodes.csv" />
     <entry file="file://$PROJECT_DIR$/barcode_scanner_image.py" />
     <entry file="file://$PROJECT_DIR$/images/example_03.jpg" />
@@ -781,17 +791,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
+        <state relative-caret-position="304">
+          <caret line="216" column="33" lean-forward="true" selection-start-line="216" selection-start-column="33" selection-end-line="216" selection-end-column="33" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1551954007908" expanded="true" signature="12310:12313" ph="..." />
-            <marker date="1551954007908" expanded="true" signature="12563:12661" ph="..." />
-            <marker date="1551954007908" expanded="true" signature="12701:13524" ph="..." />
-            <marker date="1551954007908" expanded="true" signature="13829:14012" ph="..." />
-            <marker date="1551954007908" expanded="true" signature="14636:14655" ph="..." />
+            <element signature="e#3271#6743#0" />
+            <marker date="1551957416199" expanded="true" signature="12451:12454" ph="..." />
+            <marker date="1551957416199" expanded="true" signature="12704:12802" ph="..." />
+            <marker date="1551957416199" expanded="true" signature="12842:13665" ph="..." />
+            <marker date="1551957416199" expanded="true" signature="13970:14153" ph="..." />
+            <marker date="1551957416199" expanded="true" signature="14777:14796" ph="..." />
           </folding>
         </state>
       </provider>

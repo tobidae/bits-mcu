@@ -213,7 +213,8 @@ def main():
                 # If the last grid is the same as the user pickup location,
                 # Update the database as delivered.
                 if last_grid and last_grid == user_pickup_location:
-                    print('[INFO] Now at {0}\'s location Grid {1}. Delivering case'.format(user_name, last_grid))
+                    print('[INFO] Now at {0}\'s location Grid {1}. Case Delivered!'.format(user_name, last_grid))
+                    print('='*60)
                     case_delivered(user_id, order_push_key, last_grid)
                     reset_vars()
                     continue
