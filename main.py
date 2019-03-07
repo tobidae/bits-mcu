@@ -73,8 +73,8 @@ def main():
         nonlocal case_rfid
         nonlocal user_id
         nonlocal user_name
-        nonlocal found_case
         nonlocal end_of_grid
+        nonlocal found_case
         nonlocal is_searching_for_case
         nonlocal is_case_at_kart_debug
         nonlocal is_case_not_at_kart_debug
@@ -82,14 +82,14 @@ def main():
         scanned_rfid = None
         checked_queue = False
 
-        case_location = None
-        case_rfid = None
-        case_id = None
+        order_push_key = None
         order_reference = None
         case_data = None
+        case_id = None
+        case_location = None
+        case_rfid = None
         user_id = None
         user_name = None
-        order_push_key = None
 
         found_case = False
         end_of_grid = False
@@ -174,8 +174,14 @@ def main():
             # Update the found order table
             if found_case and user_id and order_push_key:
                 case_found(user_id, order_push_key)
-                reset_vars()
+                print('='*60)
+                print('='*60)
+                # TODO: May have to enable this for demo
+                # reset_vars()
                 continue
+
+            # After the order is found, the order needs to be transported to the user
+            # Since kart is in transport mode only, it simply needs the OCR
 
         combined_output = ''.join(text_output)  # Combine the text to reduce runtime
 
@@ -277,7 +283,7 @@ def get_caseid_with_rfid(rf):
 def get_case_info(caseid):
     # Pass in the table where the case info is stored
     # Returns details about the case
-    return db.get('cases/{0}'.format(caseid))
+    return db.get('cases/{0}'.format(caseid)) or {}
 
 
 def get_user_info(userid):
