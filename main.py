@@ -22,6 +22,8 @@ order_queue = queue.Queue(maxsize=20)
 device_id = hex(uuid.getnode())
 
 
+# TODO: If the system reads an RFID not in system, print an error message saying it's not there
+
 def main():
     # Initialize the video stream
     print("[INFO] Starting video stream...")
@@ -36,9 +38,9 @@ def main():
 
     print('[INFO] Done loading sub-modules...\n', '='*60)
 
-    cur_grid = None
+    cur_kart_location = None
     checked_queue = False
-    last_grid = db.get('kartInfo/{0}/currentLocation'.format(device_id))
+    last_kart_location = db.get('kartInfo/{0}/currentLocation'.format(device_id))
     scanned_rfid = None
 
     order_reference = None
@@ -105,6 +107,7 @@ def main():
 
         transporting_to_user = False
 
+    # Always run the program
     while True:
         # grab the frame from the threaded video stream and resize it to
         # have a maximum width of 400 pixels
@@ -117,6 +120,8 @@ def main():
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
             previous_rfid = None
+                
+            # If the case is not found and not at end of grid
             while not found_case and not end_of_grid:
                 if not is_searching_for_case:
                     print('[INFO] Searching for case...', case_rfid)
@@ -126,32 +131,42 @@ def main():
 
                 # Just don't print the same rfid twice, once is enough
                 if scanned_rfid and scanned_rfid != previous_rfid:
-                    print("\n[INFO] Scanned ID: {0}".format(scanned_rfid))
+                    print("\n[INFO] Kart Scanned ID: {0}".format(scanned_rfid))
 
                 # Get the frames in this loop since outside frame is not accessible
                 scan_frame = vs.read()
                 scan_frame = imutils.resize(scan_frame, width=400)
 
+                # Get the output text from the recognized frame
                 text_output = grid_reknize.recognize(scan_frame)
+                # Get the bar code data from the scanned frame
                 bar_data = bar_scanner.run_scanner(scan_frame)
-                time.sleep(0.3)
+                time.sleep(0.3)  # Sleep for 30ms
+
+                # If the case location is not the same as the current kart location
+                if case_location != last_kart_location:
+                    print('{0}[INFO] Kart not currently at Case location, move to location{1}'
+                          .format(bcolors.OKBLUE, bcolors.ENDC))
 
                 if case_rfid == scanned_rfid:
-                    print('[INFO] Case found via RFID, sending order to {0}'.format(user_name))
+                    print('[INFO] Case found via RFID, moving order to {0} at Grid {1}'
+                          .format(user_name, user_pickup_location))
                     found_case = True
                     break
 
+                # The means of finding the case is through RFID Scanning
                 if scanned_rfid and case_rfid != scanned_rfid and scanned_rfid != previous_rfid:
                     previous_rfid = scanned_rfid
-                    print('{0}[ERROR] Case RFID {1} does not match scanned RFID {2}'
-                          .format(bcolors.WARNING, case_rfid, scanned_rfid))
+                    print('{0}[ERROR] Case RFID {1} does not match scanned RFID {2}{3}'
+                          .format(bcolors.WARNING, case_rfid, scanned_rfid, bcolors.ENDC))
                     wrong_case_id = get_caseid_with_rfid(scanned_rfid)
                     wrong_case_data = get_case_info(wrong_case_id)
-                    print('[INFO] Updating location of {0} to Grid {1}'.format(wrong_case_data['name'], last_grid))
+                    print('[INFO] Updating location of {0} to Grid {1}'.format(wrong_case_data['name'], last_kart_location))
                     print('='*60)
-                    update_case_location(wrong_case_id, last_grid)
+                    update_case_location(wrong_case_id, last_kart_location)
                     is_searching_for_case = False
 
+                # The means of finding the case is through QR scanning
                 if bar_data:
                     scanned_case_id = bar_data['caseId']
                     if scanned_case_id:
@@ -159,7 +174,7 @@ def main():
                         scanned_case_name = scanned_case_data['name']
                         print('[INFO] {0} QR code was scanned'.format(scanned_case_name))
 
-                        update_case_location(scanned_case_id, last_grid)
+                        update_case_location(scanned_case_id, last_kart_location)
                         if scanned_case_id == case_id:
                             print('[INFO] {0} was found via QR, sending order to {1}\n'
                                   .format(scanned_case_name, user_name), '='*60)
@@ -167,6 +182,8 @@ def main():
                             break
                         else:
                             print('[INFO] {0} does not match the right QR\n'.format(scanned_case_name), '='*60)
+                    else:
+                        print('{0}[ERROR] Invalid QR Data{1}'.format(bcolors.WARNING, bcolors.ENDC))
 
                 combined_output = ''.join(text_output)
 
@@ -183,13 +200,10 @@ def main():
                 case_found(user_id, order_push_key)
                 transporting_to_user = True
                 print('='*60)
-                # TODO: May have to enable this for demo
-                # reset_vars()
-                # continue
 
         # After the order is found, the order needs to be transported to the user
         # Once kart is in transport mode only, it simply needs the OCR
-        while found_case and transporting_to_user and last_grid != user_pickup_location:
+        while found_case and transporting_to_user and last_kart_location != user_pickup_location:
             # Get the frames in this loop since outside frame is not accessible
             scan_frame = vs.read()
             scan_frame = imutils.resize(scan_frame, width=400)
@@ -201,22 +215,24 @@ def main():
 
             # If the last output is not the same as the combined text and there is a combined text
             if len(combined_output) > 0:
-                cur_grid = check_grid(combined_output)
+                cur_kart_location = check_grid(combined_output)
 
                 # If there is a current grid and the last grid is not the same as the new one,
                 # Update the database with information of the kart's new grid and set end of grid to false
-                if cur_grid and last_grid != cur_grid:
-                    update_kart_location(device_id, cur_grid)
-                    last_grid = cur_grid
-                    cur_grid = None
+                if cur_kart_location and last_kart_location != cur_kart_location:
+                    update_kart_location(device_id, cur_kart_location)
+                    last_kart_location = cur_kart_location
+                    cur_kart_location = None
                     end_of_grid = False
+                elif cur_kart_location:
+                    cur_kart_location = None
 
                 # If the last grid is the same as the user pickup location,
                 # Update the database as delivered.
-                if last_grid and last_grid == user_pickup_location:
-                    print('[INFO] Now at {0}\'s location Grid {1}. Case Delivered!'.format(user_name, last_grid))
+                if last_kart_location and last_kart_location == user_pickup_location:
+                    print('[INFO] Now at {0}\'s location Grid {1}. Case Delivered!'.format(user_name, last_kart_location))
                     print('='*60)
-                    case_delivered(user_id, order_push_key, last_grid)
+                    case_delivered(user_id, order_push_key, last_kart_location)
                     reset_vars()
                     continue
 
@@ -224,14 +240,14 @@ def main():
 
         # If the last output is not the same as the combined text and there is a combined text
         if len(combined_output) > 0:
-            cur_grid = check_grid(combined_output)
+            cur_kart_location = check_grid(combined_output)
 
             # If there is a current grid and the last grid is not the same as the new one,
             # Update the database with information of the kart's new grid and set end of grid to false
-            if cur_grid and last_grid != cur_grid:
-                update_kart_location(device_id, cur_grid)
-                last_grid = cur_grid
-                cur_grid = None
+            if cur_kart_location and last_kart_location != cur_kart_location:
+                update_kart_location(device_id, cur_kart_location)
+                last_kart_location = cur_kart_location
+                cur_kart_location = None
                 end_of_grid = False
 
         # If the order queue for this cart is not empty, we got an order
@@ -267,15 +283,15 @@ def main():
             case_rfid = case_data['rfid']
             print('[INFO] RFID for {0} is {1}\n'.format(case_data['name'], case_rfid), '='*60)
 
-        # If there is a case location, cur_ref is not null and the
+        # If there is a case location, current reference is not null and the
         # starting point for case and kart locations are different,
         # add the order back in queue and move on till we are at the case location
-        if case_location and order_reference and case_location != last_grid and checked_queue:
+        if case_location and order_reference and case_location != last_kart_location and checked_queue:
             if not is_case_not_at_kart_debug:
-                print('[INFO] Case and Kart are not in the same grid, beginning search...\n', '='*60)
+                print('[INFO] Case and Kart are not in the same grid, moving to new location...\n', '='*60)
                 is_case_not_at_kart_debug = True
             checked_queue = False
-        elif case_location and order_reference and case_location == last_grid:
+        elif case_location and order_reference and case_location == last_kart_location:
             if not is_case_at_kart_debug:
                 print('[INFO] Case and Kart are in the same grid, beginning search...\n', '='*60)
                 is_case_at_kart_debug = True
