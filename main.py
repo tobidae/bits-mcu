@@ -22,8 +22,6 @@ order_queue = queue.Queue(maxsize=20)
 device_id = hex(uuid.getnode())
 
 
-# TODO: If the system reads an RFID not in system, print an error message saying it's not there
-
 def main():
     # Initialize the video stream
     print("[INFO] Starting video stream...")
@@ -143,11 +141,6 @@ def main():
                 bar_data = bar_scanner.run_scanner(scan_frame)
                 time.sleep(0.3)  # Sleep for 30ms
 
-                # If the case location is not the same as the current kart location
-                if case_location != last_kart_location:
-                    print('{0}[INFO] Kart not currently at Case location, move to location{1}'
-                          .format(bcolors.OKBLUE, bcolors.ENDC))
-
                 if case_rfid == scanned_rfid:
                     print('[INFO] Case found via RFID, moving order to {0} at Grid {1}'
                           .format(user_name, user_pickup_location))
@@ -224,8 +217,6 @@ def main():
                     last_kart_location = cur_kart_location
                     cur_kart_location = None
                     end_of_grid = False
-                elif cur_kart_location:
-                    cur_kart_location = None
 
                 # If the last grid is the same as the user pickup location,
                 # Update the database as delivered.
@@ -288,7 +279,8 @@ def main():
         # add the order back in queue and move on till we are at the case location
         if case_location and order_reference and case_location != last_kart_location and checked_queue:
             if not is_case_not_at_kart_debug:
-                print('[INFO] Case and Kart are not in the same grid, moving to new location...\n', '='*60)
+                print('{0}[INFO] Case and Kart are not in the same grid, moving to new location...{1}\n'
+                      .format(bcolors.OKBLUE, bcolors.ENDC), '='*60)
                 is_case_not_at_kart_debug = True
             checked_queue = False
         elif case_location and order_reference and case_location == last_kart_location:

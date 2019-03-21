@@ -20,10 +20,8 @@ class Rfid:
         # Open Serial, if there is an exception, try the next port
         try:
             # Find the serial value on your unix device using `ls /dev/tty.*`
-            if platform.system() == 'Windows':
-                self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
-            elif platform.system() == 'Darwin':
-                self.ser = serial.Serial(port='/dev/tty.usbserial-1440', baudrate=9600, timeout=.0001)
+            if platform.system() == 'Darwin':
+                self.ser = serial.Serial(port='/dev/tty.usbserial-1410', baudrate=9600, timeout=.0001)
             else:
                 self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
         except serial.SerialException as msg:
