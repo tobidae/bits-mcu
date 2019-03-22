@@ -34,11 +34,20 @@ def main():
     bar_scanner = barcode_scanner.Scanner()
     grid_reknize = text_recognition.TextRecognition()
 
+    print('[INFO] Kart ID is {0}'.format(device_id))
     print('[INFO] Done loading sub-modules...\n', '='*60)
 
     cur_kart_location = None
-    checked_queue = False
     last_kart_location = db.get('kartInfo/{0}/currentLocation'.format(device_id))
+
+    if not last_kart_location:
+        # This means the kart is new. It is been released from its base station
+        db.update('kartInfo/{0}', {
+            'currentLocation': 'A1'
+        })
+        last_kart_location = 'A1'
+
+    checked_queue = False
     scanned_rfid = None
 
     order_reference = None

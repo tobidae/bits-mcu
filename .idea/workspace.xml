@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rfid.py" beforeDir="false" afterPath="$PROJECT_DIR$/rfid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,16 +21,18 @@
     <session id="-1045527353">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="4" />
+          <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -39,9 +41,9 @@
           <entry key="gitignore" value="2" />
           <entry key="ini" value="4" />
           <entry key="jpg" value="9" />
-          <entry key="md" value="3" />
+          <entry key="md" value="4" />
           <entry key="png" value="1" />
-          <entry key="py" value="69" />
+          <entry key="py" value="71" />
           <entry key="txt" value="10" />
         </counts>
       </usages-collector>
@@ -49,9 +51,9 @@
         <counts>
           <entry key="Image" value="10" />
           <entry key="Ini" value="4" />
-          <entry key="Markdown" value="3" />
+          <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="13" />
-          <entry key="Python" value="69" />
+          <entry key="Python" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -59,17 +61,17 @@
           <entry key="dummy" value="16" />
           <entry key="gitignore" value="14" />
           <entry key="ini" value="279" />
-          <entry key="md" value="475" />
-          <entry key="py" value="15553" />
-          <entry key="txt" value="877" />
+          <entry key="md" value="725" />
+          <entry key="py" value="15723" />
+          <entry key="txt" value="908" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="279" />
-          <entry key="Markdown" value="475" />
-          <entry key="PLAIN_TEXT" value="907" />
-          <entry key="Python" value="15553" />
+          <entry key="Markdown" value="725" />
+          <entry key="PLAIN_TEXT" value="938" />
+          <entry key="Python" value="15723" />
         </counts>
       </usages-collector>
     </session>
@@ -79,16 +81,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="97">
+              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#5501#6399#0" />
-                <element signature="e#6526#6699#0" />
-                <element signature="e#6920#7144#0" />
-                <element signature="e#9717#10755#0" />
-                <marker date="1553209993359" expanded="true" signature="13377:13380" ph="..." />
+                <marker date="1553244172321" expanded="true" signature="13660:13663" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.virtualenvs/bits/lib/python3.7/site-packages/imutils/video/videostream.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-103">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -96,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rfid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
+            <state relative-caret-position="300">
               <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
             </state>
           </provider>
@@ -156,7 +163,6 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/barcode_scanner_video.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/helpers/Readme-Secondly.txt" />
         <option value="$PROJECT_DIR$/config.ini" />
         <option value="$PROJECT_DIR$/database.py" />
@@ -165,6 +171,7 @@
         <option value="$PROJECT_DIR$/barcode_scanner.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/rfid.py" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -202,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,7 +226,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -537,14 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553203018744</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="change rfid serial condition">
+      <created>1553210011035</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1553210011035</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16544567" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16910867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -558,7 +572,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32857144" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39591837" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.44489795" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.44489795" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -585,7 +599,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added some first time run handling" />
     <MESSAGE value="remove idea file" />
     <MESSAGE value="get case info, convert to json" />
     <MESSAGE value="case ID" />
@@ -610,7 +623,8 @@
     <MESSAGE value="log" />
     <MESSAGE value="color logging, delete from kart queue" />
     <MESSAGE value="rename variables, add checking for kart location" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename variables, add checking for kart location" />
+    <MESSAGE value="change rfid serial condition" />
+    <option name="LAST_COMMIT_MESSAGE" value="change rfid serial condition" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -711,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text_recognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="147" column="75" selection-start-line="147" selection-start-column="75" selection-end-line="147" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/bits/lib/python3.7/site-packages/firebase_admin/messaging.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
@@ -732,26 +739,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="105">
-            <caret line="7" column="113" selection-start-line="7" selection-start-column="113" selection-end-line="7" selection-end-column="113" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/firebase.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1551913945000" expanded="true" signature="333:339" ph="..." />
-            <marker date="1551913945000" expanded="true" signature="988:1030" ph="..." />
-            <marker date="1551913945000" expanded="true" signature="1428:1429" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -778,22 +769,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rfid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
+        <state relative-caret-position="300">
           <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="91" selection-start-line="3" selection-start-column="91" selection-end-line="3" selection-end-column="91" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text_recognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/bits/lib/python3.7/site-packages/imutils/video/videostream.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="97">
+          <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#5501#6399#0" />
-            <element signature="e#6526#6699#0" />
-            <element signature="e#6920#7144#0" />
-            <element signature="e#9717#10755#0" />
-            <marker date="1553209993359" expanded="true" signature="13377:13380" ph="..." />
+            <marker date="1553244172321" expanded="true" signature="13660:13663" ph="..." />
           </folding>
         </state>
       </provider>
