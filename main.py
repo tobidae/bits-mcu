@@ -25,8 +25,8 @@ device_id = hex(uuid.getnode())
 def main():
     # Initialize the video stream
     print("[INFO] Starting video stream...")
-    vs = VideoStream(src=0).start()
-    # vs = VideoStream(usePiCamera=True).start()
+    # vs = VideoStream(src=0).start()
+    vs = VideoStream(usePiCamera=True).start()
     time.sleep(2)
 
     # Initialize the rfid, barcode scanner and text recognition classes

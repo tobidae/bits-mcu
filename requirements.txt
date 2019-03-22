@@ -5,3 +5,4 @@ pyzbar
 imutils
 opencv-python
 pytesseract
+picamera
