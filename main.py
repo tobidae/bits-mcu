@@ -42,7 +42,7 @@ def main():
 
     if not last_kart_location:
         # This means the kart is new. It is been released from its base station
-        db.update('kartInfo/{0}', {
+        db.update('kartInfo/{0}'.format(device_id), {
             'currentLocation': 'A1'
         })
         last_kart_location = 'A1'
