@@ -124,6 +124,8 @@ def main():
         # Continuously call the bar scanner, OCR and RFID Scanner
         text_output = grid_reknize.recognize(frame)
 
+        cv2.imshow(frame, "Outside")
+
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
             previous_rfid = None
@@ -143,6 +145,8 @@ def main():
                 # Get the frames in this loop since outside frame is not accessible
                 scan_frame = vs.read()
                 scan_frame = imutils.resize(scan_frame, width=400)
+
+                cv2.imshow(scan_frame, "Inside")
 
                 # Get the output text from the recognized frame
                 text_output = grid_reknize.recognize(scan_frame)
