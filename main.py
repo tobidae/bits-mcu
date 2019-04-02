@@ -185,7 +185,7 @@ def main():
                         else:
                             print('[INFO] {0} does not match the right QR\n'.format(scanned_case_name), '='*60)
                     else:
-                        print('{0}[ERROR] Invalid QR Data{1}'.format(bcolors.WARNING, bcolors.ENDC))
+                        print('{0}[ERROR] Invalid QR Code scanned {1}'.format(bcolors.WARNING, bcolors.ENDC))
 
                 combined_output = ''.join(text_output)
 

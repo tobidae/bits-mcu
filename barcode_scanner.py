@@ -1,7 +1,7 @@
 # import the necessary packages
 from pyzbar import pyzbar
-import datetime
 import ast
+import sys
 
 
 class Scanner:
@@ -34,3 +34,24 @@ class Scanner:
                 print('[ERROR] Wrong QR data format')
 
         return barcode_data
+
+
+if sys.argv[1] == 'test':
+    from imutils.video import VideoStream
+
+    import imutils
+    import time
+
+    print("[INFO] Starting video stream...")
+    vs = VideoStream(src=0).start()
+    # vs = VideoStream(usePiCamera=True).start()
+    time.sleep(2)
+
+    while True:
+        frame = vs.read()
+        frame = imutils.resize(frame, width=400)
+
+        bar_data = Scanner().run_scanner(frame)
+
+        print(bar_data)
+        time.sleep(1)

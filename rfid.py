@@ -4,6 +4,7 @@ import time
 import serial
 import binascii
 import platform
+import sys
 
 """
 Logic
@@ -21,7 +22,7 @@ class Rfid:
         try:
             # Find the serial value on your unix device using `ls /dev/tty.*`
             if platform.system() == 'Darwin':
-                self.ser = serial.Serial(port='/dev/tty.usbserial-1410', baudrate=9600, timeout=.0001)
+                self.ser = serial.Serial(port='/dev/tty.usbserial-1450', baudrate=9600, timeout=.0001)
             else:
                 self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
         except serial.SerialException as msg:
@@ -43,3 +44,13 @@ class Rfid:
         x = binascii.hexlify(x)
         q = x.decode("ascii")
         return q[4:27]
+
+
+# For debugging
+
+if sys.argv[1] == 'test':
+    rfid = Rfid(None)
+    while True:
+        scanned_rfid = rfid.do_scan()
+        print(scanned_rfid)
+        time.sleep(1)
