@@ -11,6 +11,7 @@ import queue
 import uuid
 
 # All the ID'd grids at a location
+# Can be defined in server when deploying to swarm
 grids = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
 
 # Initialize the database

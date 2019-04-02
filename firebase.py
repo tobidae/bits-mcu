@@ -1,8 +1,12 @@
 import firebase_admin
 from firebase_admin import credentials, db, messaging
+from configparser import ConfigParser
 
+pyconfig = ConfigParser()
 cred = credentials.Certificate("helpers/google-services.json")
-dbApp = firebase_admin.initialize_app(cred, {'databaseURL': 'https://boeing-bits.firebaseio.com/'})
+dbApp = firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://{0}.firebaseio.com/'.format(pyconfig.get('firebase', 'project_name'))
+})
 
 
 class Database:

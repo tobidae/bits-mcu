@@ -46,8 +46,7 @@ class Rfid:
         return q[4:27]
 
 
-# For debugging
-
+# For debugging and testing functionality
 if sys.argv[1] == 'test':
     rfid = Rfid(None)
     while True:
