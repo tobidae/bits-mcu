@@ -167,7 +167,7 @@ class TextRecognition:
 
 
 # Test code to check text recognition functionality
-if sys.argv[1] and sys.argv[1] == 'test':
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
     from imutils.video import VideoStream
     import time
 

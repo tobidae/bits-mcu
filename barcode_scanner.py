@@ -36,7 +36,7 @@ class Scanner:
         return barcode_data
 
 
-if sys.argv[1] == 'test':
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
     from imutils.video import VideoStream
 
     import imutils
