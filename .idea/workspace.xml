@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/barcode_scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/barcode_scanner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firebase.py" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rfid.py" beforeDir="false" afterPath="$PROJECT_DIR$/rfid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_recognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_recognition.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +22,7 @@
     <session id="-1045527353">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="2" />
@@ -42,23 +41,23 @@
         <counts>
           <entry key="csv" value="1" />
           <entry key="gitignore" value="2" />
-          <entry key="ini" value="5" />
+          <entry key="ini" value="6" />
           <entry key="jpg" value="9" />
           <entry key="json" value="1" />
           <entry key="md" value="4" />
           <entry key="png" value="1" />
-          <entry key="py" value="77" />
+          <entry key="py" value="82" />
           <entry key="txt" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="10" />
-          <entry key="Ini" value="5" />
+          <entry key="Ini" value="6" />
           <entry key="JSON" value="1" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="77" />
+          <entry key="Python" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -67,16 +66,16 @@
           <entry key="gitignore" value="14" />
           <entry key="ini" value="319" />
           <entry key="md" value="725" />
-          <entry key="py" value="16350" />
-          <entry key="txt" value="1053" />
+          <entry key="py" value="16388" />
+          <entry key="txt" value="1085" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="319" />
           <entry key="Markdown" value="725" />
-          <entry key="PLAIN_TEXT" value="1083" />
-          <entry key="Python" value="16350" />
+          <entry key="PLAIN_TEXT" value="1115" />
+          <entry key="Python" value="16388" />
         </counts>
       </usages-collector>
     </session>
@@ -86,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4800">
+            <state relative-caret-position="3027">
               <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -96,32 +95,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/helpers/google-services.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rfid.py">
+        <entry file="file://$PROJECT_DIR$/firebase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+            <state relative-caret-position="105">
+              <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
               <folding>
-                <element signature="e#23#34#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/barcode_scanner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="218">
+              <caret line="38" selection-start-line="38" selection-end-line="57" selection-end-column="21" />
               <folding>
                 <element signature="e#32#57#0" expanded="true" />
               </folding>
@@ -132,10 +122,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/text_recognition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1922">
-              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="12" selection-end-column="38" />
+            <state relative-caret-position="356">
+              <caret line="169" selection-start-line="169" selection-end-line="188" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rfid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="52" column="14" selection-start-line="49" selection-end-line="54" selection-end-column="21" />
+              <folding>
+                <element signature="e#23#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,18 +148,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/firebase.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -200,8 +190,8 @@
       <find>combined_output</find>
       <find>show</find>
       <find>rfid_scanner</find>
-      <find>config</find>
       <find>previous_rfid</find>
+      <find>config</find>
     </findStrings>
     <replaceStrings>
       <replace>text_recognition</replace>
@@ -224,12 +214,12 @@
         <option value="$PROJECT_DIR$/database.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/barcode_scanner.py" />
-        <option value="$PROJECT_DIR$/text_recognition.py" />
         <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/firebase.py" />
-        <option value="$PROJECT_DIR$/rfid.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/firebase.py" />
+        <option value="$PROJECT_DIR$/text_recognition.py" />
+        <option value="$PROJECT_DIR$/barcode_scanner.py" />
+        <option value="$PROJECT_DIR$/rfid.py" />
       </list>
     </option>
   </component>
@@ -287,6 +277,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -650,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554186308291</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="config movements, added comments">
+      <created>1554186698000</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1554186698000</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -671,7 +669,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32834226" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39591837" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.12040816" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.35816327" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -698,7 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Scanner, db" />
     <MESSAGE value="added documentation, moved rfid and sections around" />
     <MESSAGE value="call all modules from main" />
     <MESSAGE value="made text recognition class" />
@@ -723,7 +720,8 @@
     <MESSAGE value="remove logging" />
     <MESSAGE value="pixy" />
     <MESSAGE value="added test code to check functionality of sub modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test code to check functionality of sub modules" />
+    <MESSAGE value="config movements, added comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="config movements, added comments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -882,13 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.py">
+    <entry file="file://$PROJECT_DIR$/helpers/google-services.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -901,37 +896,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text_recognition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1922">
-          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="12" selection-end-column="38" />
+        <state relative-caret-position="356">
+          <caret line="169" selection-start-line="169" selection-end-line="188" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/barcode_scanner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#32#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rfid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding>
-            <element signature="e#23#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4800">
+        <state relative-caret-position="3027">
           <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -940,10 +915,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/google-services.json">
+    <entry file="file://$PROJECT_DIR$/firebase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="105">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rfid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="52" column="14" selection-start-line="49" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="e#23#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/barcode_scanner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="38" selection-start-line="38" selection-end-line="57" selection-end-column="21" />
+          <folding>
+            <element signature="e#32#57#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -48,10 +48,11 @@ if sys.argv[1] == 'test':
     time.sleep(2)
 
     while True:
-        frame = vs.read()
-        frame = imutils.resize(frame, width=400)
+        test_frame = vs.read()
 
-        bar_data = Scanner().run_scanner(frame)
+        test_frame = imutils.resize(test_frame, width=400)
+
+        bar_data = Scanner().run_scanner(test_frame)
 
         print(bar_data)
-        time.sleep(1)
+        time.sleep(2)

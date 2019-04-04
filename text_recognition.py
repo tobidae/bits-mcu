@@ -167,22 +167,22 @@ class TextRecognition:
 
 
 # Test code to check text recognition functionality
-if sys.argv[1] == 'test':
-    from imutils.video import VideoStream
-    import time
-
-    print("[INFO] Starting video stream...")
-    vs = VideoStream(src=0).start()
-    # vs = VideoStream(usePiCamera=True).start()
-    time.sleep(2)
-
-    text_rec = TextRecognition()
-
-    while True:
-        frame = vs.read()
-        frame = imutils.resize(frame, width=400)
-
-        text_output = text_rec.recognize(frame)
-        print(text_output)
-
-        time.sleep(1)
+# if sys.argv[1] == 'test':
+#     from imutils.video import VideoStream
+#     import time
+#
+#     print("[INFO] Starting video stream...")
+#     vs = VideoStream(src=0).start()
+#     # vs = VideoStream(usePiCamera=True).start()
+#     time.sleep(2)
+#
+#     text_rec = TextRecognition()
+#
+#     while True:
+#         frame = vs.read()
+#         frame = imutils.resize(frame, width=400)
+#
+#         text_output = text_rec.recognize(frame)
+#         print(text_output)
+#
+#         time.sleep(1)
