@@ -47,7 +47,7 @@ class Rfid:
 
 
 # For debugging and testing functionality
-if sys.argv[1] == 'test':
+if sys.argv[1] and sys.argv[1] == 'test':
     rfid = Rfid(None)
     while True:
         scanned_rfid = rfid.do_scan()
