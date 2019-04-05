@@ -3,9 +3,10 @@ from firebase_admin import credentials, db, messaging
 from configparser import ConfigParser
 
 pyconfig = ConfigParser()
+project_name = pyconfig.get('firebase', 'project_name')
 cred = credentials.Certificate("helpers/google-services.json")
 dbApp = firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://boeing-bits.firebaseio.com/'
+    'databaseURL': 'https://{0}.firebaseio.com/'.format(project_name)
 })
 
 
