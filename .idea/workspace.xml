@@ -64,40 +64,40 @@
           <entry key="gitignore" value="14" />
           <entry key="ini" value="319" />
           <entry key="md" value="725" />
-          <entry key="py" value="16496" />
-          <entry key="txt" value="1174" />
+          <entry key="py" value="16531" />
+          <entry key="txt" value="1186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="319" />
           <entry key="Markdown" value="725" />
-          <entry key="PLAIN_TEXT" value="1204" />
-          <entry key="Python" value="16496" />
+          <entry key="PLAIN_TEXT" value="1216" />
+          <entry key="Python" value="16531" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1140">
-              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            <state relative-caret-position="242">
+              <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1554429311463" expanded="true" signature="13739:13742" ph="..." />
+                <marker date="1554429596613" expanded="true" signature="13824:13827" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jetsonvideostream.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state relative-caret-position="240">
+              <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -645,14 +645,21 @@
       <option name="project" value="LOCAL" />
       <updated>1554429170856</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="frame check">
+      <created>1554429535538</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1554429535538</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17826618" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17826618" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -666,7 +673,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32834226" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39591837" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.35816327" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.35816327" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -693,7 +700,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="queue for kart order" />
     <MESSAGE value="logic for checking for" />
     <MESSAGE value="logging to console" />
     <MESSAGE value="check qr data type, scan rfid and print logs" />
@@ -718,7 +724,8 @@
     <MESSAGE value="gstreamer" />
     <MESSAGE value="added jetson video stream" />
     <MESSAGE value="camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="camera" />
+    <MESSAGE value="frame check" />
+    <option name="LAST_COMMIT_MESSAGE" value="frame check" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -925,23 +932,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/jetsonvideostream.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1140">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        <state relative-caret-position="240">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1554429311463" expanded="true" signature="13739:13742" ph="..." />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jetsonvideostream.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+        <state relative-caret-position="242">
+          <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1554429596613" expanded="true" signature="13824:13827" ph="..." />
           </folding>
         </state>
       </provider>

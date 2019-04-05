@@ -242,6 +242,8 @@ def main():
                     reset_vars()
                     continue
 
+        if not text_output:
+            continue
         combined_output = ''.join(text_output)  # Combine the text to reduce computation runtime
 
         # If the last output is not the same as the combined text and there is a combined text
