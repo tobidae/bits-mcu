@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="7612dbbd-77e0-4b6b-a2fc-21c5ffaa344c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,16 +62,16 @@
           <entry key="gitignore" value="14" />
           <entry key="ini" value="319" />
           <entry key="md" value="725" />
-          <entry key="py" value="16531" />
-          <entry key="txt" value="1186" />
+          <entry key="py" value="16572" />
+          <entry key="txt" value="1198" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="319" />
           <entry key="Markdown" value="725" />
-          <entry key="PLAIN_TEXT" value="1216" />
-          <entry key="Python" value="16531" />
+          <entry key="PLAIN_TEXT" value="1228" />
+          <entry key="Python" value="16572" />
         </counts>
       </usages-collector>
     </session>
@@ -83,11 +81,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
+            <state relative-caret-position="-1043">
+              <caret line="151" column="55" selection-start-line="151" selection-start-column="55" selection-end-line="151" selection-end-column="55" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1554429596613" expanded="true" signature="13824:13827" ph="..." />
+                <marker date="1554429814610" expanded="true" signature="13812:13815" ph="..." />
               </folding>
             </state>
           </provider>
@@ -652,7 +650,28 @@
       <option name="project" value="LOCAL" />
       <updated>1554429535538</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="frame check">
+      <created>1554429603103</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1554429603103</updated>
+    </task>
+    <task id="LOCAL-00046" summary="frame check">
+      <created>1554429755392</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1554429755392</updated>
+    </task>
+    <task id="LOCAL-00047" summary="output check">
+      <created>1554429839214</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1554429839214</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -700,7 +719,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="logic for checking for" />
     <MESSAGE value="logging to console" />
     <MESSAGE value="check qr data type, scan rfid and print logs" />
     <MESSAGE value="added messaging from kart, one time logging" />
@@ -725,7 +743,8 @@
     <MESSAGE value="added jetson video stream" />
     <MESSAGE value="camera" />
     <MESSAGE value="frame check" />
-    <option name="LAST_COMMIT_MESSAGE" value="frame check" />
+    <MESSAGE value="output check" />
+    <option name="LAST_COMMIT_MESSAGE" value="output check" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
@@ -944,11 +963,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
+        <state relative-caret-position="-1043">
+          <caret line="151" column="55" selection-start-line="151" selection-start-column="55" selection-end-line="151" selection-end-column="55" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1554429596613" expanded="true" signature="13824:13827" ph="..." />
+            <marker date="1554429814610" expanded="true" signature="13812:13815" ph="..." />
           </folding>
         </state>
       </provider>
