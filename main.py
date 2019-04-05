@@ -216,6 +216,9 @@ def main():
             text_output = grid_reknize.recognize(scan_frame)
             time.sleep(0.3)
 
+            if not text_output:
+                break
+
             combined_output = ''.join(text_output)
 
             # If the last output is not the same as the combined text and there is a combined text
