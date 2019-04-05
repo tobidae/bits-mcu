@@ -27,7 +27,7 @@ device_id = hex(uuid.getnode())
 def main():
     # Initialize the video stream
     print("[INFO] Starting video stream...")
-    # gst = "nvcamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)24/1 ! nvvidconv flip-method=6 ! video/x-raw, format=(string)I420 ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
+
     vs = JetsonVideoStream().start()
     time.sleep(2)
 
@@ -121,10 +121,11 @@ def main():
         # grab the frame from the threaded video stream and resize it to
         # have a maximum width of 400 pixels
         frame = vs.read()
-        frame = imutils.resize(frame, width=400)
+        if frame:
+            frame = imutils.resize(frame, width=400)
 
-        # Continuously call the bar scanner, OCR and RFID Scanner
-        text_output = grid_reknize.recognize(frame)
+            # Continuously call the bar scanner, OCR and RFID Scanner
+            text_output = grid_reknize.recognize(frame)
 
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:

@@ -8,7 +8,7 @@ class JetsonVideoStream:
         # the jetson board
         width = resolution[0]
         height = resolution[1]
-        cameraString = ('nvcamerasrc ! '
+        camera_string = ('nvcamerasrc ! '
                         'video/x-raw(memory:NVMM), '
                         'width=(int)2592, height=(int)1458, '
                         'format=(string)I420, framerate=(fraction)30/1 ! '
@@ -19,7 +19,7 @@ class JetsonVideoStream:
 
         # initialize the video camera stream using gstreamer and read
         # the first frame from the stream
-        self.stream = cv2.VideoCapture(cameraString, cv2.CAP_V4L)
+        self.stream = cv2.VideoCapture(camera_string, cv2.CAP_V4L)
         (self.grabbed, self.frame) = self.stream.read()
 
         # initialize the thread name
