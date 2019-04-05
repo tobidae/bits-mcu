@@ -126,6 +126,8 @@ def main():
 
             # Continuously call the bar scanner, OCR and RFID Scanner
             text_output = grid_reknize.recognize(frame)
+        else:
+            text_output = ""
 
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
@@ -216,9 +218,6 @@ def main():
             text_output = grid_reknize.recognize(scan_frame)
             time.sleep(0.3)
 
-            if not text_output:
-                break
-
             combined_output = ''.join(text_output)
 
             # If the last output is not the same as the combined text and there is a combined text
@@ -242,8 +241,6 @@ def main():
                     reset_vars()
                     continue
 
-        if not text_output:
-            continue
         combined_output = ''.join(text_output)  # Combine the text to reduce computation runtime
 
         # If the last output is not the same as the combined text and there is a combined text
