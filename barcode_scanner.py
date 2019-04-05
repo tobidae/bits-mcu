@@ -37,14 +37,13 @@ class Scanner:
 
 
 if len(sys.argv) > 1 and sys.argv[1] == 'test':
-    from imutils.video import VideoStream
+    from jetsonvideostream import JetsonVideoStream
 
     import imutils
     import time
 
     print("[INFO] Starting video stream...")
-    vs = VideoStream(src=0).start()
-    # vs = VideoStream(usePiCamera=True).start()
+    vs = JetsonVideoStream().start()
     time.sleep(2)
 
     while True:
