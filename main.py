@@ -26,7 +26,8 @@ device_id = hex(uuid.getnode())
 def main():
     # Initialize the video stream
     print("[INFO] Starting video stream...")
-    vs = VideoStream(src=0).start()
+    gst = "nvcamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)24/1 ! nvvidconv flip-method=6 ! video/x-raw, format=(string)I420 ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
+    vs = VideoStream(src=gst).start()
     # vs = VideoStream(usePiCamera=True).start()
     time.sleep(2)
 
