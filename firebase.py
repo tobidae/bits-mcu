@@ -3,6 +3,8 @@ from firebase_admin import credentials, db, messaging
 from configparser import ConfigParser
 
 pyconfig = ConfigParser()
+pyconfig.read('config.ini')
+
 project_name = pyconfig.get('firebase', 'project_name')
 cred = credentials.Certificate("helpers/google-services.json")
 dbApp = firebase_admin.initialize_app(cred, {
