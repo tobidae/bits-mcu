@@ -29,7 +29,6 @@ def main():
     print("[INFO] Starting video stream...")
     # gst = "nvcamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)24/1 ! nvvidconv flip-method=6 ! video/x-raw, format=(string)I420 ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
     vs = JetsonVideoStream().start()
-    # vs = VideoStream(usePiCamera=True).start()
     time.sleep(2)
 
     # Initialize the rfid, barcode scanner and text recognition classes

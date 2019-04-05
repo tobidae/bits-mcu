@@ -19,7 +19,7 @@ class JetsonVideoStream:
 
         # initialize the video camera stream using gstreamer and read
         # the first frame from the stream
-        self.stream = cv2.VideoCapture(cameraString, cv2.CAP_GSTREAMER)
+        self.stream = cv2.VideoCapture(cameraString, cv2.CAP_V4L)
         (self.grabbed, self.frame) = self.stream.read()
 
         # initialize the thread name
