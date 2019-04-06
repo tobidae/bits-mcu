@@ -8,14 +8,21 @@ class JetsonVideoStream:
         # the jetson board
         width = resolution[0]
         height = resolution[1]
-        camera_string = ('nvcamerasrc ! '
-                        'video/x-raw(memory:NVMM), '
-                        'width=(int)2592, height=(int)1458, '
-                        'format=(string)I420, framerate=(fraction)30/1 ! '
-                        'nvvidconv ! '
-                        'video/x-raw, width=(int){}, height=(int){}, '
-                        'format=(string)BGRx ! '
-                        'videoconvert ! appsink').format(width, height)
+        # camera_string = ('nvcamerasrc ! '
+        #                 'video/x-raw(memory:NVMM), '
+        #                 'width=(int)2592, height=(int)1458, '
+        #                 'format=(string)I420, framerate=(fraction)30/1 ! '
+        #                 'nvvidconv ! '
+        #                 'video/x-raw, width=(int){}, height=(int){}, '
+        #                 'format=(string)BGRx ! '
+        #                 'videoconvert ! appsink').format(width, height)
+        camera_string = ('nvarguscamerasrc ! '
+                         'video/x-raw(memory:NVMM), '
+                         'width=(int)1920, height=(int)1080, '
+                         'format=(string)NV12, framerate=(fraction)30/1 ! '
+                         'nvvidconv flip-method=2 ! '
+                         'video/x-raw, format=(string)BGRx ! '
+                         'videoconvert ! video/x-raw, format=(string)BGR ! appsink')
 
         # initialize the video camera stream using gstreamer and read
         # the first frame from the stream
