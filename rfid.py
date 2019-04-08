@@ -20,7 +20,7 @@ class Rfid:
 
         # Open Serial, if there is an exception, try the next port
         try:
-            # Find the serial value on your unix device using `ls /dev/tty.*`
+            # Find the serial value on your unix device using `ls /dev/tty*`
             if platform.system() == 'Darwin':
                 self.ser = serial.Serial(port='/dev/tty.usbserial-1450', baudrate=9600, timeout=.0001)
             else:

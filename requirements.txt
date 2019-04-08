@@ -3,6 +3,4 @@ pyserial
 numpy
 pyzbar
 imutils
-opencv-python
 pytesseract
-picamera
