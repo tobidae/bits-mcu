@@ -121,13 +121,10 @@ def main():
         # grab the frame from the threaded video stream and resize it to
         # have a maximum width of 400 pixels
         frame = vs.read()
-        if frame:
-            frame = imutils.resize(frame, width=400)
+        frame = imutils.resize(frame, width=400)
 
-            # Continuously call the bar scanner, OCR and RFID Scanner
-            text_output = grid_reknize.recognize(frame)
-        else:
-            text_output = ""
+        # Continuously call the bar scanner, OCR and RFID Scanner
+        text_output = grid_reknize.recognize(frame)
 
         # Run bar and rfid scanner only if there is a case rfid
         if case_rfid:
