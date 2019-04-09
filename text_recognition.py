@@ -173,9 +173,8 @@ if len(sys.argv) > 1 and sys.argv[1] == 'test':
 
     print("[INFO] Starting video stream...")
     vs = JetsonVideoStream().start()
-    time.sleep(2)
-
     text_rec = TextRecognition()
+    time.sleep(2)
 
     while True:
         test_frame = vs.read()

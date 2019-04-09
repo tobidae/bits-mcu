@@ -38,7 +38,6 @@ class Scanner:
 
 if len(sys.argv) > 1 and sys.argv[1] == 'test':
     from jetsonvideostream import JetsonVideoStream
-
     import imutils
     import time
 
@@ -47,10 +46,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'test':
     time.sleep(2)
 
     while True:
-        test_frame = vs.read()
-
-        test_frame = imutils.resize(test_frame, width=400)
-
+        test_frame = imutils.resize(vs.read(), width=400)
         bar_data = Scanner().run_scanner(test_frame)
 
         print(bar_data)
