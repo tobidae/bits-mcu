@@ -26,7 +26,6 @@ class Rfid:
             else:
                 self.ser = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=.0001)
         except serial.SerialException as msg:
-            self.ser = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=.0001)
             print('Error', msg)
 
     # Continuously scans rfid

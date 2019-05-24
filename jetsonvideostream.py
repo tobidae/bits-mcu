@@ -16,14 +16,6 @@ class JetsonVideoStream:
                          'video/x-raw, width=(int){}, height=(int){}, '
                          'format=(string)BGRx ! '
                          'videoconvert ! appsink').format(width, height)
-        # gst-launch-1.0 nvarguscamerasrc ! 'video/x-raw(memory:NVMM), width=(int)1920, height=(int)1080, format=(string)NV12, framerate=(fraction)30/1' ! nvvidconv flip-method=2 ! 'video/x-raw, format=(string)BGRx' ! videoconvert ! 'video/x-raw, format=(string)BGR' ! appsink
-        # camera_string = ('nvarguscamerasrc ! '
-        #                  'video/x-raw(memory:NVMM), '
-        #                  'width=(int)1920, height=(int)1080, '
-        #                  'format=(string)NV12, framerate=(fraction)30/1 ! '
-        #                  'nvvidconv flip-method=2 ! '
-        #                  'video/x-raw, format=(string)BGRx ! '
-        #                  'videoconvert ! video/x-raw, format=(string)BGR ! appsink')
 
         # initialize the video camera stream using gstreamer and read
         # the first frame from the stream
